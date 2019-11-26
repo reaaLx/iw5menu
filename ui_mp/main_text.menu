@@ -1,0 +1,77 @@
+#include "ui/menudef.h"
+
+#define CHOICE_GROUP		"main_text"
+
+#include "ui/iw5_setup_common.menu"
+#include "ui_mp/menustyle.inc"
+{
+	menuDef
+	{
+		name "main_text"
+		rect 0 0 640 480 0 0
+		visible 1
+		forecolor 1 1 1 1
+		focuscolor 1 1 1 1
+		fullscreen 1
+		onOpen
+		{
+			setLocalVarInt "ui_buttonNavGroupOffset" ( 0 );
+			setLocalVarInt "ui_buttonNavGroupCurrent" ( 0 );
+			setLocalVarString "ui_buttonNavGroupName" ( "invalid" );
+			setLocalVarBool "ui_swfSelectionButtonVis" ( 0 );
+			setLocalVarBool "ui_swfSelectionBarVis" ( 0 );
+			setLocalVarBool "ui_swfSelectionDisabled" ( 0 );
+			setLocalVarBool "ui_swfPopupSelectionButtonVis" ( 0 );
+			setLocalVarBool "ui_swfPopupSelectionBarVis" ( 0 );
+			setLocalVarBool "ui_swfPopupSelectionDisabled" ( 0 );
+			setLocalVarString "ui_swfPopupContext" ( "invalid" );
+			focusfirst;
+			setdvar "ui_version_show" 0;
+			setLocalVarBool "ui_centerPopup" ( 0 );
+			setLocalVarInt "ui_open_time" ( milliseconds( ) );
+			setLocalVarString "sharedBackgroundMusic" ( "music_mainmenu_mp" );
+			setLocalVarString "temp" ( debugprint( "DEBUG" , " MP Root Open" ) );
+			if ( menuisopen( "menu_xboxlive_partyended" ) )
+			{
+				setLocalVarInt "ui_buttonNavGroupOffset" ( 0 );
+				setLocalVarInt "ui_buttonNavGroupCurrent" ( 0 );
+				setLocalVarString "ui_buttonNavGroupName" ( "invalid" );
+				setLocalVarBool "ui_swfSelectionButtonVis" ( 0 );
+				setLocalVarBool "ui_swfSelectionBarVis" ( 0 );
+				setLocalVarBool "ui_swfSelectionDisabled" ( 0 );
+				close "menu_xboxlive_partyended";
+				open "menu_xboxlive_partyended";
+			}
+		}
+		onEsc
+		{
+			open "quit_popmenu";
+		}
+		#include "ui_mp/bg.inc"
+
+		itemDef
+		{
+			rect -64 3 276.667 24.233 1 1
+			decoration
+			visible 0
+			style 1
+			forecolor 1 1 1 1
+			textfont 9
+			textalign 14
+			textscale 0.5
+			visible when ( 1 )
+			exp text ( locstring( "@MENU_MULTIPLAYER_CAPS" ) )
+		}
+		
+		CHOICE_SEPERATOR( 0 )
+		CHOICE_BUTTON( 0, "play_online", "@PLATFORM_PLAY_ONLINE_CAPS", ; )
+		CHOICE_SEPERATOR( 1 )
+		CHOICE_BUTTON( 1, "vault", "VAULT", ; )
+		CHOICE_BUTTON( 2, "servers", "SERVERS", open "pc_join_unranked"; )
+		CHOICE_BUTTON( 3, "options", "@MENU_OPTIONS_CAPS", open "main_options"; )
+		CHOICE_BUTTON( 4, "barracks", "@MENU_BARRACKS_CAPS", open "menu_online_barracks"; )
+		CHOICE_BUTTON( 5, "quit", "@MENU_QUIT_CAPS", open "quit_popmenu"; )
+		CHOICE_SEPERATOR( 6 )
+		CHOICE_BUTTON( 6, "cac", "@MENU_CREATE_A_CLASS_CAPS", open "cac_popup"; )
+	}	
+}

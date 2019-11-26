@@ -1,0 +1,232 @@
+#include "ui/menudef.h"
+
+#define CHOICE_GROUP		"menu_challenges"
+
+#include "ui/iw5_setup_common.menu"
+#include "ui_mp/menustyle.inc"
+{
+	menuDef
+	{
+		name "menu_challenges"
+		rect 0 0 640 480 0 0
+		visible 1
+		forecolor 1 1 1 1
+		focuscolor 1 1 1 1
+		fullscreen 1
+		onOpen
+		{
+			focusfirst;
+		}
+		onEsc
+		{
+			close self;
+		}
+		#define BACKGROUND_BLUR
+		#include "ui_mp/bg.inc"
+
+		itemDef
+		{
+			rect -64 3 276.667 24.233 1 1
+			decoration
+			visible 0
+			style 1
+			forecolor 1 1 1 1
+			textfont 9
+			textalign 14
+			textscale 0.5
+			visible when ( 1 )
+			exp text ( locstring( "@MPUI_CHALLENGE_CAP" ) )
+		}
+		
+		CHOICE_SEPERATOR( 0 )
+		
+		#include "ui_mp/challenges.inc"
+		
+		CHOICE_BUTTON( 0, "0", "@CHALLENGE_PRIMARY_WEAPONS_CAPS", open "popup_challenge_weapon_primary")
+		CHOICE_BUTTON( 1, "1", "@CHALLENGE_SECONDARY_WEAPONS_CAPS", open "popup_challenge_weapon_secondary")		
+		
+		LOCAL_CH_BUTTON( 2, "2", 2 )
+		LOCAL_CH_BUTTON( 3, "3", 3 )
+		LOCAL_CH_BUTTON( 4, "4", 4 )
+		LOCAL_CH_BUTTON( 5, "5", 5 )
+		LOCAL_CH_BUTTON( 6, "6", 6 )
+		LOCAL_CH_BUTTON( 7, "7", 7 )
+		LOCAL_CH_BUTTON( 8, "8", 8 )
+		LOCAL_CH_BUTTON( 9, "9", 9 )
+		LOCAL_CH_BUTTON( 10, "10", 10 )
+		LOCAL_CH_BUTTON( 11, "11", 11 )
+		LOCAL_CH_BUTTON( 12, "12", 12 )
+		LOCAL_CH_BUTTON( 13, "13", 13 )
+		LOCAL_CH_BUTTON( 14, "14", 14 )
+		
+		itemDef
+		{
+			rect 237.6 -36 301.5 480 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 0.4
+			background "white"
+			textscale 0.55
+			exp rect w ( 226 )
+		}
+		itemDef
+		{
+			rect 237.5 -236 13 680 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 1 1 1 0.75
+			background "gradient"
+			textscale 0.55
+			exp rect x ( 457.5 )
+			exp forecolor r ( 0.596078 )
+			exp forecolor g ( 0.654902 )
+			exp forecolor b ( 0.603922 )
+		}
+		itemDef
+		{
+			rect 237.5 -236 13 680 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 1 1 1 0.75
+			background "gradient"
+			textscale 0.55
+			exp rect x ( 457.5 )
+			exp forecolor r ( 0.596078 )
+			exp forecolor g ( 0.654902 )
+			exp forecolor b ( 0.603922 )
+		}	
+		itemDef // primary
+		{
+			rect 288.667 39.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // secondary
+		{
+			rect 288.667 59.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // perks
+		{
+			rect 288.667 79.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // equipment
+		{
+			rect 288.667 99.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // basic training
+		{
+			rect 288.667 119.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // operations
+		{
+			rect 288.667 139.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // killstreaks
+		{
+			rect 288.667 159.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // precision
+		{
+			rect 288.667 179.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // finishing moves
+		{
+			rect 288.667 199.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // humiliation
+		{
+			rect 288.667 219.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // payback
+		{
+			rect 288.667 239.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // elite
+		{
+			rect 288.667 259.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+		itemDef // intimidation
+		{
+			rect 288.667 279.333 122 9.333 1 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 1
+			background "white"
+			textscale 0.55
+		}
+	}
+}
