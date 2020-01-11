@@ -102,7 +102,7 @@
 		#undef CHOICE_TEXT_OFFSET_X
 		#define CHOICE_TEXT_OFFSET_X -248
 		
-		CHOICE_BUTTON( 24, "advancedsettings", "@MENU_ADVANCED_VIDEO", LOCAL_CLOSE_ALL open "pc_options_advanced_video"; )
+		CHOICE_BUTTON( 24, "advancedsettings", "@MENU_ADVANCED_VIDEO", LOCAL_CLOSE_ALL_IW5 open "pc_options_advanced_video"; )
 		
 		itemDef
 		{

@@ -696,7 +696,7 @@
 			exp rect y ( 4 + ( ( 20 + 4 ) * 3 ) )
 			visible when ( 1 )
 			disabled when ( 0 )
-			exp text ( dvarstring( "ui_maxPingName" ) ) )
+			exp text ( dvarstring( "ui_maxPingName" ) )
 			action
 			{
 				play "mouse_click";
@@ -762,7 +762,7 @@
 			exp rect y ( 4 + ( ( 20 + 4 ) * 0 ) )
 			visible when ( 1 )
 			disabled when ( 0 )
-			exp text ( dvarstring( "ui_filterMapName" ) ) )
+			exp text ( dvarstring( "ui_filterMapName" ) )
 			action
 			{
 				play "mouse_click";
@@ -828,7 +828,7 @@
 			exp rect y ( 4 + ( ( 20 + 4 ) * 1 ) )
 			visible when ( 1 )
 			disabled when ( 0 )
-			exp text ( dvarstring( "ui_joinGameTypeName" ) ) )
+			exp text ( dvarstring( "ui_joinGameTypeName" ) )
 			action
 			{
 				play "mouse_click";

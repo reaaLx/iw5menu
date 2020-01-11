@@ -1,22 +1,3 @@
-			#define LOCAL_CLOSE_ALL \
-					close "pc_options_actions"; \
-					close "pc_options_advanced_video"; \
-					close "pc_options_audio"; \
-					close "pc_options_controls"; \
-					close "pc_options_look"; \
-					close "pc_options_movement"; \
-					close "pc_options_video"; \
-					close "pc_options_voice"; \
-					close "options_graphics"; \
-					close "options_graphics_texture"; \
-					close "options_graphics_defaults"; \
-					close "options_control_defaults"; \
-					close "options_voice"; \
-					close "options_multi"; \
-					close "controls_multi"; \
-					close "main_options"; \
-					close "main_controls";
-
 #ifndef CHOICE_X_START
 #define CHOICE_X_START				-98
 #endif

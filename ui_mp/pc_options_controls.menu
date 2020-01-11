@@ -84,11 +84,11 @@
 		#undef CHOICE_TEXT_HIGHLIGHT
 		#define CHOICE_TEXT_HIGHLIGHT "gradient_center"
 		
-		CHOICE_BUTTON( 20, "movement", "@MENU_MOVEMENT", LOCAL_CLOSE_ALL open "pc_options_movement"; )
-		CHOICE_BUTTON( 21, "actions", "@MENU_ACTIONS", LOCAL_CLOSE_ALL open "pc_options_actions"; )
-		CHOICE_BUTTON( 22, "look", "@MENU_LOOK", LOCAL_CLOSE_ALL open "pc_options_look"; )
-		CHOICE_BUTTON( 23, "chat", "@MENU_CHAT", LOCAL_CLOSE_ALL open "controls_multi"; )
-		CHOICE_BUTTON( 24, "reset", "@MENU_RESTORE_DEFAULT_CONTROLS", LOCAL_CLOSE_ALL open "options_control_defaults"; )
+		CHOICE_BUTTON( 20, "movement", "@MENU_MOVEMENT", LOCAL_CLOSE_ALL_IW5 open "pc_options_movement"; )
+		CHOICE_BUTTON( 21, "actions", "@MENU_ACTIONS", LOCAL_CLOSE_ALL_IW5 open "pc_options_actions"; )
+		CHOICE_BUTTON( 22, "look", "@MENU_LOOK", LOCAL_CLOSE_ALL_IW5 open "pc_options_look"; )
+		CHOICE_BUTTON( 23, "chat", "@MENU_CHAT", LOCAL_CLOSE_ALL_IW5 open "controls_multi"; )
+		CHOICE_BUTTON( 24, "reset", "@MENU_RESTORE_DEFAULT_CONTROLS", LOCAL_CLOSE_ALL_IW5 open "options_control_defaults"; )
 
 	}	
 }

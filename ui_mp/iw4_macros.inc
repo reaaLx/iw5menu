@@ -1,4 +1,4 @@
-			#define LOCAL_CLOSE_ALL \
+			#define LOCAL_CLOSE_ALL_IW5 \
 					close "pc_options_actions"; \
 					close "pc_options_advanced_video"; \
 					close "pc_options_audio"; \

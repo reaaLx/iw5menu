@@ -15,6 +15,7 @@
 		fullscreen 1
 		onOpen
 		{
+			setdvar "ui_version_show" 0;
 			setLocalVarInt "ui_buttonNavGroupOffset" ( 0 );
 			setLocalVarInt "ui_buttonNavGroupCurrent" ( 0 );
 			setLocalVarString "ui_buttonNavGroupName" ( "invalid" );
