@@ -1,7 +1,8 @@
 #include "ui/menudef.h"
 #include "ui_mp/common_macro.inc"
 #include "ui_mp/iw4_macros.inc"
-#define CHOICE_GROUP		"main_text"
+
+#define CHOICE_GROUP	"main_text"
 #define CHOICE_SEP_1	1
 #define CHOICE_SEP_2	3
 #define CHOICE_SEP_3	5
@@ -71,7 +72,7 @@
 			visible when ( 1 )
 			exp text ( locstring( "@MENU_MULTIPLAYER_CAPS" ) )
 		}
-		/*
+		/* // old format
 		CHOICE_SEPERATOR( 0 )
 		CHOICE_BUTTON( 0, "play_online", "@PLATFORM_PLAY_ONLINE_CAPS", ; )
 		CHOICE_SEPERATOR( 1 )
@@ -113,7 +114,7 @@
 		
 		CHOICE_SEPERATOR( CHOICE_SEP_5 )
 		
-		CHOICE_BUTTON_FOCUS_EX( 8, "button_8", "@MENU_STORE_CAPS", open "pc_store", setLocalVarString "ui_hint_text" ( "@MPUI_DESC_STORE" ), CLEAR_UI_HINT, UI_TEXT_GLOWCOLOR_EX_SETUP )
+		CHOICE_BUTTON_FOCUS( 8, "button_8", "@MENU_STORE_CAPS", open "pc_store", setLocalVarString "ui_hint_text" ( "@MPUI_DESC_STORE" ), CLEAR_UI_HINT )
 		//CHOICE_NEWICON_VIS(8, when(!dvarbool( "isDlcInstalled_All" ) ) )
 
 		CHOICE_SEPERATOR( CHOICE_SEP_6 )
