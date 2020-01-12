@@ -145,7 +145,8 @@
 		{
 			close "standard_gametypes";
 		}
-		
+
+		#undef BACKGROUND_BLUR
 		#define BACKGROUND_BLUR
 		#include "ui_mp/bg.inc"
 
@@ -202,83 +203,40 @@
 			visible when ( 1 )
 			text "STANDARD MODES"
 		}
-		
+		#include "ui_mp/gametype_info.inc"
+
 		CHOICE_SEPERATOR( 0 )
-		CHOICE_BUTTON_FOCUS( 0, "@MPUI_DEATHMATCH", "@MPUI_DEATHMATCH_CAPS",
-					setDvar ui_gametype "dm";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_DEATHMATCH" )
-					setLocalVarString "ui_info_desc" ( "@MENU_KILL_EVERYONE_FIRST_PLAYER" ) )
-		CHOICE_BUTTON_FOCUS( 1, "@MPUI_TEAM_DEATHMATCH", "@MPUI_TEAM_DEATHMATCH_CAPS",
-					setDvar ui_gametype "war";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_TEAM_DEATHMATCH" )
-					setLocalVarString "ui_info_desc" ( "@MENU_KILL_PLAYERS_ON_THE_OPPOSING" ) )
-		CHOICE_BUTTON_FOCUS( 2, "@MPUI_SEARCH_AND_DESTROY", "@MPUI_SEARCH_AND_DESTROY_CAPS",
-					setDvar ui_gametype "sd";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_SEARCH_AND_DESTROY" )
-					setLocalVarString "ui_info_desc" ( "@MENU_TEAMS_TAKE_TURNS_DEFENDING" ) )
-		CHOICE_BUTTON_FOCUS( 3, "@MPUI_SABOTAGE", "@MPUI_SABOTAGE_CAPS",
-					setDvar ui_gametype "sab";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_SABOTAGE" )
-					setLocalVarString "ui_info_desc" ( "@MENU_1_BOMB_IN_THE_CENTER" ) )
-		CHOICE_BUTTON_FOCUS( 4, "@MPUI_DOMINATION", "@MPUI_DOMINATION_CAPS",
-					setDvar ui_gametype "dom";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_DOMINATION" )
-					setLocalVarString "ui_info_desc" ( "@MENU_CAPTURE_AND_HOLD_THE" ) )
-		CHOICE_BUTTON_FOCUS( 5, "@MPUI_HEADQUARTERS", "@MPUI_HEADQUARTERS_CAPS",
-					setDvar ui_gametype "koth";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_HEADQUARTERS" )
-					setLocalVarString "ui_info_desc" ( "@MENU_CAPTURE_THE_HEADQUARTERS" ) )
-		CHOICE_BUTTON_FOCUS( 6, "@MPUI_CTF", "@MPUI_CTF_CAPS",
-					setDvar ui_gametype "ctf";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_CTF" )
-					setLocalVarString "ui_info_desc" ( "@MENU_CTF_DESC" ) )
-		CHOICE_BUTTON_FOCUS( 7, "@MENU_DD", "DEMOLITION",
-					setDvar ui_gametype "dd";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "DEMOLITION" )
-					setLocalVarString "ui_info_desc" ( "@MENU_DD" ) )
+		LOCAL_GAMETYPE_SELECTION( 0, "button_0", "dm",   "dm" )
+		LOCAL_GAMETYPE_SELECTION( 1, "button_1", "war",  "war" )
+		LOCAL_GAMETYPE_SELECTION( 2, "button_2", "sd",   "sd" )
+		LOCAL_GAMETYPE_SELECTION( 3, "button_3", "sab",  "sab" )
+		LOCAL_GAMETYPE_SELECTION( 4, "button_4", "dom",  "dom" )
+		LOCAL_GAMETYPE_SELECTION( 5, "button_5", "koth", "koth" )
+		LOCAL_GAMETYPE_SELECTION( 6, "button_6", "ctf",  "ctf" )
+		LOCAL_GAMETYPE_SELECTION( 7, "button_7", "dd",   "dd" )
 
 		itemDef
 		{
-			rect 251 114 200 20 1 1
+			rect 251 34.667 200 20 1 1
 			decoration
 			autowrapped
 			visible 1
 			forecolor 1 1 1 1
 			textfont 9
-			textalign 12
-			textalignx 247
+			textalign 13
 			textscale 0.4
-			exp rect x ( select( dvarbool( "widescreen" ) , ( ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) + ( select( localvarbool( "ui_shelfTimeInvert" ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , ( 0 - 242 ) , ( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , 0 , ( 1 - ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) ) ) ) , ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) ) )
 			exp text ( localvarstring( "ui_info_name" ) )
 		}
 		itemDef
 		{
-			rect 251 153 200 20 1 1
+			rect 251 204.667 200 20 1 1
 			decoration
 			autowrapped
 			visible 1
 			forecolor 1 1 1 1
 			textfont 3
-			textalign 8
-			textalignx 247
+			textalign 9
 			textscale 0.340278
-			exp rect x ( select( dvarbool( "widescreen" ) , ( ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) + ( select( localvarbool( "ui_shelfTimeInvert" ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , ( 0 - 242 ) , ( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , 0 , ( 1 - ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) ) ) ) , ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) ) )
 			exp text ( localvarstring( "ui_info_desc" ) )
 		}
 		itemDef
@@ -338,10 +296,11 @@
 		{
 			close "alt_gametypes";
 		}
-		
+	
+		#undef BACKGROUND_BLUR
 		#define BACKGROUND_BLUR
 		#include "ui_mp/bg.inc"
-
+		
 		itemDef
 		{
 			rect 237.6 -36 301.5 480 1 1
@@ -397,58 +356,33 @@
 		}
 		
 		CHOICE_SEPERATOR( 0 )
-		CHOICE_BUTTON_FOCUS( 0, "@MPUI_ONE_FLAG", "@MPUI_ONE_FLAG_CAPS",
-					setDvar ui_gametype "oneflag";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_ONE_FLAG" )
-					setLocalVarString "ui_info_desc" ( "@MENU_TEAMS_TAKE_TURNS_CAPTURING" ) )
-		CHOICE_BUTTON_FOCUS( 1, "@MPUI_ARENA", "@MPUI_ARENA_CAPS",
-					setDvar ui_gametype "arena";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_ARENA" )
-					setLocalVarString "ui_info_desc" ( "@MPUI_ARENA" ) )
-		CHOICE_BUTTON_FOCUS( 2, "@MENU_VIP", "VIP",
-					setDvar ui_gametype "vip";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "VIP" )
-					setLocalVarString "ui_info_desc" ( "@MENU_VIP" ) )
-		CHOICE_BUTTON_FOCUS( 3, "@MPUI_GTNW", "@MPUI_GTNW_CAPS",
-					setDvar ui_gametype "gtnw";
-					close "settings_gametype";
-					close "self";,
-					setLocalVarString "ui_info_name" ( "@MPUI_GTNW" )
-					setLocalVarString "ui_info_desc" ( "@MENU_GTNW_DESC" ) )
-		
+		LOCAL_GAMETYPE_SELECTION( 0, "button_0", "oneflag",   "oneflag" )
+		LOCAL_GAMETYPE_SELECTION( 1, "button_1", "arena",  "arena" )
+		LOCAL_GAMETYPE_SELECTION( 2, "button_2", "vip",   "vip" )
+		LOCAL_GAMETYPE_SELECTION( 3, "button_3", "gtnw",  "gtnw" )
 
 		itemDef
 		{
-			rect 251 114 200 20 1 1
+			rect 251 34.667 200 20 1 1
 			decoration
 			autowrapped
 			visible 1
 			forecolor 1 1 1 1
 			textfont 9
-			textalign 12
-			textalignx 247
+			textalign 13
 			textscale 0.4
-			exp rect x ( select( dvarbool( "widescreen" ) , ( ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) + ( select( localvarbool( "ui_shelfTimeInvert" ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , ( 0 - 242 ) , ( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , 0 , ( 1 - ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) ) ) ) , ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) ) )
 			exp text ( localvarstring( "ui_info_name" ) )
 		}
 		itemDef
 		{
-			rect 251 153 200 20 1 1
+			rect 251 204.667 200 20 1 1
 			decoration
 			autowrapped
 			visible 1
 			forecolor 1 1 1 1
 			textfont 3
-			textalign 8
-			textalignx 247
+			textalign 9
 			textscale 0.340278
-			exp rect x ( select( dvarbool( "widescreen" ) , ( ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) + ( select( localvarbool( "ui_shelfTimeInvert" ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , ( 0 - 242 ) , ( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) , select( ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) > 100 , 0 , ( 1 - ( milliseconds( ) - localvarfloat( "ui_shelfTime" ) ) / 100 ) * ( 0 - 242 ) ) ) ) ) , ( 219.5 + ( 0 - 64 ) + 78 + 17.5 ) ) )
 			exp text ( localvarstring( "ui_info_desc" ) )
 		}
 		itemDef

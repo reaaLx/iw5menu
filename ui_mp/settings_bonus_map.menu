@@ -25,11 +25,10 @@
 		{
 			close "self";
 		}
-		
+
 		#define BACKGROUND_BLUR
 		#include "ui_mp/bg.inc"
 
-		
 		itemDef
 		{
 			rect -64 3 276.667 24.233 1 1
@@ -43,7 +42,6 @@
 			visible when ( 1 )
 			text "MAPS"
 		}
-
 		itemDef
 		{
 			rect 0 0 0 20 3 3
@@ -75,7 +73,6 @@
 				close "self";
 			}
 		}
-
 		itemDef
 		{
 			rect -252.667 2.667 253.333 20 3 1
@@ -92,80 +89,46 @@
 			exp text ( locstring( "@MPUI_RECOMMENDEDPLAYERS" , int( min( dvarint( "party_maxPlayers" ) , maxrecommendedplayers( ) ) ) ) )
 		}
 
-		CHOICE_SEPERATOR( 0 )
-		CHOICE_BUTTON( 0, "custom", "^3CUSTOM MAPS", open "settings_custom_map" ; )
-		CHOICE_BUTTON_FOCUS( 1, "bailout", "BAILOUT",
-					setdvar ui_mapname mp_complex;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_complex" )
-					setLocalVarString "ui_info_name" ( "BAILOUT" )
-					setLocalVarString "ui_info_desc" ( "PATCH_DESC_MAP_COMPLEX" ) )
-		CHOICE_BUTTON_FOCUS( 2, "crash", "CRASH",
-					setdvar ui_mapname mp_crash;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_crash" )
-					setLocalVarString "ui_info_name" ( "CRASH" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_crash" ) )
-		CHOICE_BUTTON_FOCUS( 3, "OVERGROWN", "OVERGROWN",
-					setdvar ui_mapname mp_OVERGROWN;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_OVERGROWN" )
-					setLocalVarString "ui_info_name" ( "OVERGROWN" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_OVERGROWN" ) )
-		CHOICE_BUTTON_FOCUS( 4, "SALVAGE", "SALVAGE",
-					setdvar ui_mapname mp_compact;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_compact" )
-					setLocalVarString "ui_info_name" ( "SALVAGE" )
-					setLocalVarString "ui_info_desc" ( "PATCH_DESC_MAP_compact" ) )
-		CHOICE_BUTTON_FOCUS( 5, "STORM", "STORM",
-					setdvar ui_mapname mp_STORM;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_STORM" )
-					setLocalVarString "ui_info_name" ( "STORM" )
-					setLocalVarString "ui_info_desc" ( "PATCH_DESC_MAP_STORM" ) )
-		CHOICE_BUTTON_FOCUS( 6, "CARNIVAL", "CARNIVAL",
-					setdvar ui_mapname mp_abandon;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_abandon" )
-					setLocalVarString "ui_info_name" ( "CARNIVAL" )
-					setLocalVarString "ui_info_desc" ( "PATCH_DESC_MAP_abandon" ) )
-		CHOICE_BUTTON_FOCUS( 7, "FUEL", "FUEL",
-					setdvar ui_mapname mp_fuel2;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_fuel2" )
-					setLocalVarString "ui_info_name" ( "FUEL" )
-					setLocalVarString "ui_info_desc" ( "PATCH_DESC_MAP_fuel2" ) )
-		CHOICE_BUTTON_FOCUS( 8, "STRIKE", "STRIKE",
-					setdvar ui_mapname mp_STRIKE;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_STRIKE" )
-					setLocalVarString "ui_info_name" ( "STRIKE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_STRIKE" ) )
-		CHOICE_BUTTON_FOCUS( 9, "TRAILERPARK", "TRAILER PARK",
-					setdvar ui_mapname mp_TRAILERPARK;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_TRAILERPARK" )
-					setLocalVarString "ui_info_name" ( "TRAILERPARK" )
-					setLocalVarString "ui_info_desc" ( "PATCH_DESC_MAP_TRAILERPARK" ) )
-		CHOICE_BUTTON_FOCUS( 10, "VACANT", "VACANT",
-					setdvar ui_mapname mp_VACANT;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_VACANT" )
-					setLocalVarString "ui_info_name" ( "VACANT" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_VACANT" ) )
-		
+		// norm 
+		#define LOCAL_MAP_ACTION( mapname ) \
+				setdvar ui_mapname mapname; \
+				close "settings_map"; \
+				close "self"; \
 
+		#define LOCAL_MAP_FOCUS( name, desc, icon ) \
+				setLocalVarString "ui_info_name" ( name ); \
+				setLocalVarString "ui_info_desc" ( desc ); \
+				setLocalVarString "ui_info_icon" ( icon ); \
+
+		#define LOCAL_MAP_NAME( name ) \
+				"@" + name \
+
+		#define LOCAL_MAP_BUTTON( itemIndex, buttonName, mapname, name, desc, icon ) \
+				CHOICE_BUTTON_FOCUS( itemIndex, buttonName, LOCAL_MAP_NAME( name ), LOCAL_MAP_ACTION( mapname ), LOCAL_MAP_FOCUS( name, desc, icon ), ; )
+
+		// dlc
+		#define LOCAL_CUSTOM_DLC_FOCUS \
+				setLocalVarString "ui_info_name" ( PATCH_DLC_MAPS  ); \
+				setLocalVarString "ui_info_desc" ( PATCH_DLC_MAPS_DESC ); \
+				setLocalVarString "ui_info_icon" ( loadscreen_mp_bonusmaps ); \
+
+		CHOICE_SEPERATOR( 0 )				
+		CHOICE_BUTTON_FOCUS( 0, "button_0", "^3EXTRA MAPS", open "settings_custom_map", LOCAL_CUSTOM_DLC_FOCUS, ; )
+
+		LOCAL_MAP_BUTTON( 1, "button_1", "mp_complex", 		"PATCH_COMPLEX", 		"PATCH_DESC_MAP_COMPLEX", 		"preview_mp_complex" 		)
+		LOCAL_MAP_BUTTON( 2, "button_2", "mp_crash", 		"MPUI_CRASH", 			"MPUI_DESC_MAP_CRASH", 			"preview_mp_crash" 			)
+		LOCAL_MAP_BUTTON( 3, "button_3", "mp_overgrown", 	"MPUI_OVERGROWN", 		"MPUI_DESC_MAP_OVERGROWN", 		"preview_mp_overgrown" 		)
+		LOCAL_MAP_BUTTON( 4, "button_4", "mp_compact", 		"PATCH_COMPACT", 		"PATCH_DESC_MAP_COMPACT", 		"preview_mp_compact" 		)
+		LOCAL_MAP_BUTTON( 5, "button_5", "mp_storm", 		"PATCH_STORM", 			"PATCH_DESC_MAP_STORM", 		"preview_mp_storm" 			)
+		
+		CHOICE_SEPERATOR( 6 )
+
+		LOCAL_MAP_BUTTON( 6, "button_6", "mp_abandon", 		"PATCH_ABANDON", 		"PATCH_DESC_MAP_ABANDON", 		"preview_mp_abandon" 		)
+		LOCAL_MAP_BUTTON( 7, "button_7", "mp_fuel2", 		"PATCH_FUEL2", 			"PATCH_DESC_MAP_FUEL2",			"preview_mp_fuel2" 			)
+		LOCAL_MAP_BUTTON( 8, "button_8", "mp_strike", 		"PATCH_STRIKE", 		"MPUI_DESC_MAP_STRIKE", 		"preview_mp_strike" 		)
+		LOCAL_MAP_BUTTON( 9, "button_9", "mp_trailerpark", 	"PATCH_TRAILERPARK",	"PATCH_DESC_MAP_TRAILERPARK", 	"preview_mp_trailerpark" 	)
+		LOCAL_MAP_BUTTON( 10, "button_10", "mp_vacant",		"PATCH_VACANT", 		"MPUI_DESC_MAP_VACANT", 		"preview_mp_vacant"			)
+		
 	  	itemDef
 		{
 			rect 91 33 272 20 2 1
@@ -174,7 +137,6 @@
 			background "white"
 			decoration 
 			textScale 0.55
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 0 ) )
 			visible 1
 		}
 		
@@ -186,7 +148,6 @@
 			background "white"
 			decoration 
 			textScale 0.55
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 0 ) )
 			visible 1
 		}
 		itemDef
@@ -197,7 +158,6 @@
 			style 3
 			forecolor 1 1 1 1
 			textscale 0.55
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 0 ) )
 			visible when ( 1 )
 			exp material ( localvarstring( "ui_info_icon" )  )
 		}
@@ -212,7 +172,6 @@
 			textfont 9
 			textalign 9
 			textscale 0.375
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( ( 91.333 ) ) + ( 0 ) )
 			visible when ( ( 1 ) )
 			exp text ( "@" + localvarstring( "ui_info_name" )  )
 		}
@@ -230,7 +189,6 @@
 			textalign 4
 			textalignx 4
 			textscale 0.383333
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 2.933 ) )
 			visible when ( ( 1 ) )
 			exp text ( "@" + localvarstring( "ui_info_desc" )  )
 		}
@@ -257,12 +215,13 @@
 		onESC
 		{
 			close "self";
+			open "settings_bonus_map"
 		}
-		
+
+		#undef BACKGROUND_BLUR
 		#define BACKGROUND_BLUR
 		#include "ui_mp/bg.inc"
 
-		
 		itemDef
 		{
 			rect -64 3 276.667 24.233 1 1
@@ -276,7 +235,6 @@
 			visible when ( 1 )
 			text "MAPS"
 		}
-
 		itemDef
 		{
 			rect 0 0 0 20 3 3
@@ -325,144 +283,41 @@
 			exp text ( locstring( "@MPUI_RECOMMENDEDPLAYERS" , int( min( dvarint( "party_maxPlayers" ) , maxrecommendedplayers( ) ) ) ) )
 		}
 
+		// dlc store
+		#define LOCAL_DLCSTORE_FOCUS \
+				setLocalVarString "ui_info_icon" ( "preview_dlc7" ) \
+				setLocalVarString "ui_info_name" ( "PATCH_DLC7" ) \
+				setLocalVarString "ui_info_desc" ( "PATCH_DESC_DLC7" ) )
+
 		CHOICE_SEPERATOR( 0 )
-		CHOICE_BUTTON( 0, "store", "^3GET MORE MAPS", open "pc_store" ; )
-		CHOICE_BUTTON_FOCUS( 1, "bloc", "BLOC",
-					setdvar ui_mapname mp_bloc;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_bloc" )
-					setLocalVarString "ui_info_name" ( "BLOC" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_bloc" ) )
-		CHOICE_BUTTON_FOCUS( 2, "bog", "BOG",
-					setdvar ui_mapname mp_bog_sh;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_bog_sh" )
-					setLocalVarString "ui_info_name" ( "BOG" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_BOG" ) )
-		CHOICE_BUTTON_FOCUS( 3, "CHEMICAL PLANT", "CHEMICAL PLANT",
-					setdvar ui_mapname mp_storm_spring;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_storm_spring" )
-					setLocalVarString "ui_info_name" ( "CHEMICAL PLANT" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_STORM_SPRING" ) )
-		CHOICE_BUTTON_FOCUS( 4, "CRASHTROPICAL", "CRASH: TROPICAL",
-					setdvar ui_mapname mp_crash_tropical;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_crash_tropical" )
-					setLocalVarString "ui_info_name" ( "CRASH: TROPICAL" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_CRASH_TROPICAL" ) )
-		CHOICE_BUTTON_FOCUS( 5, "CROSSFIRE", "CROSSFIRE",
-					setdvar ui_mapname mp_cross_fire;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_cross_fire" )
-					setLocalVarString "ui_info_name" ( "CROSSFIRE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_CROSSFIRE" ) )
-		CHOICE_BUTTON_FOCUS( 6, "ESTATETROPICAL", "ESTATE: TROPICAL",
-					setdvar ui_mapname mp_estate_tropical;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_estate_tropical" )
-					setLocalVarString "ui_info_name" ( "ESTATE: TROPICAL" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_ESTATE_TROPICAL" ) )
-		CHOICE_BUTTON_FOCUS( 7, "FAVELATROPICAL", "FAVELA: TROPICAL",
-					setdvar ui_mapname mp_fav_tropical;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_fav_tropical" )
-					setLocalVarString "ui_info_name" ( "FAVELA: TROPICAL" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_FAV_TROPICAL" ) )
-		CHOICE_BUTTON_FOCUS( 8, "FIRINGRANGE", "FIRING RANGE",
-					setdvar ui_mapname mp_firingrange;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_firingrange" )
-					setLocalVarString "ui_info_name" ( "FIRING RANGE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_FIRINGRANGE" ) )
-		CHOICE_BUTTON_FOCUS( 9, "FORGOTTENCITY", "FORGOTTEN CITY",
-					setdvar ui_mapname mp_bloc_sh;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_bloc_sh" )
-					setLocalVarString "ui_info_name" ( "FORGOTTEN CITY" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_BLOC_SH" ) )
-		CHOICE_BUTTON_FOCUS( 10, "FREIGHTER", "FREIGHTER",
-					setdvar ui_mapname mp_cargoship_sh;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_cargoship_sh" )
-					setLocalVarString "ui_info_name" ( "FREIGHTER" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_CARGOSHIP_SH" ) )
-		CHOICE_BUTTON_FOCUS( 11, "KILLHOUSE", "KILLHOUSE",
-					setdvar ui_mapname mp_killhouse;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_killhouse" )
-					setLocalVarString "ui_info_name" ( "KILLHOUSE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_KILLHOUSE" ) )
-		CHOICE_BUTTON_FOCUS( 12, "NUKETOWN", "NUKETOWN",
-					setdvar ui_mapname mp_nuked;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_nuked" )
-					setLocalVarString "ui_info_name" ( "NUKETOWN" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_NUKED" ) )
-		CHOICE_BUTTON_FOCUS( 13, "OILRIG", "OIL RIG",
-					setdvar ui_mapname oilrig;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_oilrig" )
-					setLocalVarString "ui_info_name" ( "OIL RIG" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_OILRIG" ) )
-		CHOICE_BUTTON_FOCUS( 14, "RUSTLONG", "RUST: LONG",
-					setdvar ui_mapname mp_rust_long;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_rust_long" )
-					setLocalVarString "ui_info_name" ( "RUST: LONG" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_RUST_LONG" ) )
-		CHOICE_BUTTON_FOCUS( 15, "SHIPMENTLONG", "SHIPMENT: LONG",
-					setdvar ui_mapname mp_shipment_long;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_shipment_long" )
-					setLocalVarString "ui_info_name" ( "SHIPMENT: LONG" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_SHIPMENT_LONG" ) )
-		CHOICE_BUTTON_FOCUS( 16, "VILLAGE", "VILLAGE",
-					setdvar ui_mapname co_hunted;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_co_hunted" )
-					setLocalVarString "ui_info_name" ( "VILLAGE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_CO_HUNTED" ) )
-		CHOICE_BUTTON_FOCUS( 17, "WET WORK", "WET WORK",
-					setdvar ui_mapname mp_cargoship;
-					close settings_bonus_map;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_cargoship" )
-					setLocalVarString "ui_info_name" ( "WET WORK" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_CARGOSHIP" ) )
+		CHOICE_BUTTON_FOCUS( 0, "button_0", "^3GET MORE MAPS", open "pc_store", LOCAL_DLCSTORE_FOCUS, ; )
+		
+		LOCAL_MAP_BUTTON( 1,   "button_1", "mp_bloc", 			"MPUI_BLOC",			"MPUI_DESC_MAP_BLOC",			"preview_mp_bloc"			)
+		LOCAL_MAP_BUTTON( 2,   "button_2", "mp_bog", 			"MPUI_BOG_SH",			"MPUI_DESC_MAP_BOG",			"preview_mp_bog_sh"			)
+		LOCAL_MAP_BUTTON( 3,   "button_3", "mp_storm_spring",	"MPUI_STORM_SPRING",	"MPUI_DESC_MAP_STORM_SPRING", 	"preview_mp_storm_spring"	)
+		LOCAL_MAP_BUTTON( 4,   "button_4", "mp_crash_tropical",	"MPUI_CRASH_TROPICAL",	"MPUI_DESC_MAP_CRASH_TROPICAL",	"preview_mp_crash_tropical"	)
+		
+		CHOICE_SEPERATOR( 5 )
+
+		LOCAL_MAP_BUTTON( 5,   "button_5", "mp_cross_fire",		"MPUI_CROSSFIRE",		"MPUI_DESC_MAP_CROSSFIRE",		"preview_mp_cross_fire"		)
+		LOCAL_MAP_BUTTON( 6,   "button_6", "mp_estate_tropical","MPUI_ESTATE_TROPICAL",	"MPUI_DESC_MAP_ESTATE_TROPICAL","preview_mp_estate_tropical")
+		LOCAL_MAP_BUTTON( 7,   "button_7", "mp_fav_tropical",	"MPUI_FAV_TROPICAL",	"MPUI_DESC_MAP_FAV_TROPICAL",	"preview_mp_fav_tropical"	)
+		LOCAL_MAP_BUTTON( 8,   "button_8", "mp_firingrange",	"MPUI_FIRINGRANGE",		"MPUI_DESC_MAP_FIRINGRANGE",	"preview_mp_firingrange"	)
+		
+		CHOICE_SEPERATOR( 9 )
+
+		LOCAL_MAP_BUTTON( 9,   "button_9", "mp_bloc_sh",		"MPUI_BLOC_SH",			"MPUI_DESC_MAP_BLOC_SH",		"preview_mp_bloc_sh"		)
+		LOCAL_MAP_BUTTON( 10,  "button_10", "mp_cargoship_sh",	"MPUI_CARGOSHIP_SH",	"MPUI_DESC_MAP_CARGOSHIP_SH",	"preview_mp_cargoship_sh"	)
+		LOCAL_MAP_BUTTON( 11,  "button_11", "mp_killhouse",		"MPUI_KILLHOUSE",		"MPUI_DESC_MAP_KILLHOUSE",		"preview_mp_killhouse"		)
+		LOCAL_MAP_BUTTON( 12,  "button_12", "mp_nuked",			"MPUI_NUKED",			"MPUI_DESC_MAP_NUKED", 			"preview_mp_nuked" 			)
+
+		CHOICE_SEPERATOR( 13 )
+
+		LOCAL_MAP_BUTTON( 13,  "button_13", "oilrig", 			"MPUI_OILRIG",			"MPUI_DESC_MAP_OILRIG",			"preview_oilrig" 			)
+		LOCAL_MAP_BUTTON( 14,  "button_14", "mp_rust_long",		"MPUI_RUST_LONG",		"MPUI_DESC_MAP_RUST_LONG",		"preview_mp_rust_long"		)
+		LOCAL_MAP_BUTTON( 15,  "button_15", "mp_shipment_long",	"MPUI_SHIPMENT_LONG",	"MPUI_DESC_MAP_SHIPMENT_LONG",	"preview_mp_shipment_long"	)
+		LOCAL_MAP_BUTTON( 16,  "button_16", "co_hunted",		"MPUI_CO_HUNTED",		"MPUI_DESC_MAP_CO_HUNTED",		"preview_co_hunted"			)
+		LOCAL_MAP_BUTTON( 17,  "button_17", "mp_cargoship",		"MPUI_CARGOSHIP",		"MPUI_DESC_MAP_CARGOSHIP",		"preview_mp_cargoship"		)
 
 	  	itemDef
 		{
@@ -472,7 +327,6 @@
 			background "white"
 			decoration 
 			textScale 0.55
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 0 ) )
 			visible 1
 		}
 		
@@ -484,7 +338,6 @@
 			background "white"
 			decoration 
 			textScale 0.55
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 0 ) )
 			visible 1
 		}
 		itemDef
@@ -495,7 +348,6 @@
 			style 3
 			forecolor 1 1 1 1
 			textscale 0.55
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 0 ) )
 			visible when ( 1 )
 			exp material ( localvarstring( "ui_info_icon" )  )
 		}
@@ -510,7 +362,6 @@
 			textfont 9
 			textalign 9
 			textscale 0.375
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( ( 91.333 ) ) + ( 0 ) )
 			visible when ( ( 1 ) )
 			exp text ( "@" + localvarstring( "ui_info_name" )  )
 		}
@@ -528,7 +379,6 @@
 			textalign 4
 			textalignx 4
 			textscale 0.383333
-			//exp rect x ( ( ( select( dvarbool( "widescreen" ) , 0 , 0 - 90 ) ) ) + ( 91.333 ) + ( 2.933 ) )
 			visible when ( ( 1 ) )
 			exp text ( "@" + localvarstring( "ui_info_desc" )  )
 		}

@@ -75,122 +75,56 @@
 				close "self";
 			}
 		}
+		// norm 
+		#define LOCAL_MAP_ACTION( mapname ) \
+				setdvar ui_mapname mapname; \
+				close "settings_map"; \
+				close "self"; \
 
 
+		#define LOCAL_MAP_FOCUS( name, desc, icon ) \
+				setLocalVarString "ui_info_name" ( name ); \
+				setLocalVarString "ui_info_desc" ( desc ); \
+				setLocalVarString "ui_info_icon" ( icon ); \
+
+		#define LOCAL_MAP_NAME( name ) \
+				"@" + name \
+
+		#define LOCAL_MAP_BUTTON( itemIndex, buttonName, mapname, name, desc, icon ) \
+				CHOICE_BUTTON_FOCUS( itemIndex, buttonName, LOCAL_MAP_NAME( name ), LOCAL_MAP_ACTION( mapname ), LOCAL_MAP_FOCUS( name, desc, icon ), ; )
+		
+		// dlc
+		#define LOCAL_XDLC_FOCUS \
+				setLocalVarString "ui_info_name" ( "PATCH_DLC_MAPS" ); \
+				setLocalVarString "ui_info_desc" ( "PATCH_DLC_MAPS_DESC" ); \
+				setLocalVarString "ui_info_icon" ( "loadscreen_mp_bonusmaps" ); \
+		
+		#undef CHOICE_TEXTCOLOR
+		#define CHOICE_TEXTCOLOR		0.55 0.93 0.56 1
+		
+		CHOICE_BUTTON_FOCUS( 0, "button_0", "^3BONUS MAPS", open "settings_bonus_map";, LOCAL_XDLC_FOCUS, ; )
+		
+		#undef CHOICE_TEXTCOLOR
+		#define CHOICE_TEXTCOLOR		1 1 1 1
+		
 		CHOICE_SEPERATOR( 0 )
-		CHOICE_BUTTON( 0, "bonus", "^3BONUS MAPS", open "settings_bonus_map" ; )
-		CHOICE_BUTTON_FOCUS( 1, "afghan", "AFGHAN",
-					setdvar ui_mapname mp_afghan;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_afghan" )
-					setLocalVarString "ui_info_name" ( "AFGHAN" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_AFGHAN" ) )
-		CHOICE_BUTTON_FOCUS( 2, "derail", "DERAIL",
-					setdvar ui_mapname mp_derail;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_derail" )
-					setLocalVarString "ui_info_name" ( "DERAIL" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_derail" ) )
-		CHOICE_BUTTON_FOCUS( 3, "Estate", "ESTATE",
-					setdvar ui_mapname mp_Estate;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Estate" )
-					setLocalVarString "ui_info_name" ( "ESTATE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Estate" ) )
-		CHOICE_BUTTON_FOCUS( 4, "Favela", "FAVELA",
-					setdvar ui_mapname mp_Favela;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Favela" )
-					setLocalVarString "ui_info_name" ( "FAVELA" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Favela" ) )
-		CHOICE_BUTTON_FOCUS( 5, "Highrise", "HIGHRISE",
-					setdvar ui_mapname mp_Highrise;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Highrise" )
-					setLocalVarString "ui_info_name" ( "HIGHRISE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Highrise" ) )
-		CHOICE_BUTTON_FOCUS( 6, "Invasion", "INVASION",
-					setdvar ui_mapname mp_Invasion;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Invasion" )
-					setLocalVarString "ui_info_name" ( "INVASION" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Invasion" ) )
-		CHOICE_BUTTON_FOCUS( 7, "Karachi", "KARACHI",
-					setdvar ui_mapname mp_checkpoint;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_checkpoint" )
-					setLocalVarString "ui_info_name" ( "KARACHI" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_checkpoint" ) )
-		CHOICE_BUTTON_FOCUS( 8, "Quarry", "QUARRY",
-					setdvar ui_mapname mp_Quarry;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Quarry" )
-					setLocalVarString "ui_info_name" ( "QUARRY" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Quarry" ) )
-		CHOICE_BUTTON_FOCUS( 9, "Rundown", "RUNDOWN",
-					setdvar ui_mapname mp_Rundown;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Rundown" )
-					setLocalVarString "ui_info_name" ( "RUNDOWN" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Rundown" ) )
-		CHOICE_BUTTON_FOCUS( 10, "Rust", "RUST",
-					setdvar ui_mapname mp_Rust;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Rust" )
-					setLocalVarString "ui_info_name" ( "RUST" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Rust" ) )
-		CHOICE_BUTTON_FOCUS( 11, "Scrapyard", "SCRAPYARD",
-					setdvar ui_mapname mp_boneyard;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_boneyard" )
-					setLocalVarString "ui_info_name" ( "SCRAPYARD" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_boneyard" ) )
-		CHOICE_BUTTON_FOCUS( 12, "Skidrow", "SKIDROW",
-					setdvar ui_mapname mp_nightshift;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_nightshift" )
-					setLocalVarString "ui_info_name" ( "SKIDROW" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_nightshift" ) )
-		CHOICE_BUTTON_FOCUS( 13, "Sub Base", "SUB BASE",
-					setdvar ui_mapname mp_subbase;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_subbase" )
-					setLocalVarString "ui_info_name" ( "SUB BASE" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_subbase" ) )
-		CHOICE_BUTTON_FOCUS( 14, "Terminal", "TERMINAL",
-					setdvar ui_mapname mp_Terminal;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_Terminal" )
-					setLocalVarString "ui_info_name" ( "TERMINAL" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_Terminal" ) )
-		CHOICE_BUTTON_FOCUS( 15, "underpass", "UNDERPASS",
-					setdvar ui_mapname mp_underpass;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_underpass" )
-					setLocalVarString "ui_info_name" (" UNDERPASS" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_underpass" ) )
-		CHOICE_BUTTON_FOCUS( 16, "Wasteland", "WASTELAND",
-					setdvar ui_mapname mp_brecourt;
-					close settings_map;
-					close self;,
-					setLocalVarString "ui_info_icon" ( "preview_mp_brecourt" )
-					setLocalVarString "ui_info_name" ( "WASTELAND" )
-					setLocalVarString "ui_info_desc" ( "MPUI_DESC_MAP_brecourt" ) )
+		LOCAL_MAP_BUTTON( 1,  "button_1", "mp_afghan", 			"MPUI_AFGHAN", 		"MPUI_DESC_MAP_AFGHAN", 	"preview_mp_afghan" 		)
+		LOCAL_MAP_BUTTON( 2,  "button_2", "mp_derail", 			"MPUI_DERAIL", 		"MPUI_DESC_MAP_DERAIL", 	"preview_mp_derail" 		)
+		LOCAL_MAP_BUTTON( 3,  "button_3", "mp_estate", 			"MPUI_ESTATE", 		"MPUI_DESC_MAP_ESTATE", 	"preview_mp_estate" 		)
+		LOCAL_MAP_BUTTON( 4,  "button_4", "mp_favela", 			"MPUI_FAVELA", 		"MPUI_DESC_MAP_FAVELA", 	"preview_mp_favela" 		)
+		LOCAL_MAP_BUTTON( 5,  "button_5", "mp_highrise",		"MPUI_HIGHRISE", 	"MPUI_DESC_MAP_HIGHRISE", 	"preview_mp_highrise" 		)
+		LOCAL_MAP_BUTTON( 6,  "button_6", "mp_invasion",		"MPUI_INVASION", 	"MPUI_DESC_MAP_INVASION", 	"preview_mp_invasion" 		)
+		LOCAL_MAP_BUTTON( 7,  "button_7", "mp_checkpoint", 		"MPUI_CHECKPOINT", 	"MPUI_DESC_MAP_CHECKPOINT", "preview_mp_checkpoint" 	)
+		LOCAL_MAP_BUTTON( 8,  "button_8", "mp_quarry", 			"MPUI_QUARRY", 		"MPUI_DESC_MAP_QUARRY", 	"preview_mp_quarry" 		)
+		LOCAL_MAP_BUTTON( 9,  "button_9", "mp_rundown",			"MPUI_RUNDOWN", 	"MPUI_DESC_MAP_RUNDOWN", 	"preview_mp_rundown" 		)
+		LOCAL_MAP_BUTTON( 10, "button_10", "mp_rust",			"MPUI_RUST", 		"MPUI_DESC_MAP_RUST", 		"preview_mp_rust" 			)
+		LOCAL_MAP_BUTTON( 11, "button_11", "mp_boneyard",		"MPUI_BONEYARD", 	"MPUI_DESC_MAP_BONEYARD", 	"preview_mp_boneyard" 		)
+		LOCAL_MAP_BUTTON( 12, "button_12", "mp_skidrow",		"MPUI_RAID", 		"MPUI_DESC_MAP_NIGHTSHIFT", "preview_mp_nightshift" 	)
+		LOCAL_MAP_BUTTON( 13, "button_13", "mp_subbase",		"MPUI_SUBBASE", 	"MPUI_DESC_MAP_SUBBASE", 	"preview_mp_subbase" 		)
+		LOCAL_MAP_BUTTON( 14, "button_14", "mp_terminal",		"MPUI_TERMINAL", 	"MPUI_DESC_MAP_TERMINAL", 	"preview_mp_terminal" 		)
+		LOCAL_MAP_BUTTON( 15, "button_15", "mp_underpass", 		"MPUI_UNDERPASS", 	"MPUI_DESC_MAP_UNDERPASS", 	"preview_mp_underpass" 		)
+		LOCAL_MAP_BUTTON( 16, "button_16", "mp_brecourt",		"MPUI_WASTELAND", 	"MPUI_DESC_MAP_BRECOURT", 	"preview_mp_brecourt" 		)
+
 		
 		itemDef
 		{

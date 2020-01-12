@@ -67,7 +67,7 @@
 			forecolor 1 1 1 1
 			textfont 9
 			textaligny 23
-			textscale 0.5
+			textscale 0.375
 			exp text ( dvarString("uiSi_ServerName") )
 		}
 		itemDef
@@ -81,26 +81,158 @@
 			backcolor 0.2431 0.2431 0.2431 1
 			textscale 0.55
 		}
-		itemDef
+		itemDef // max clients
 		{
-			name "siList1"
-			rect -190 -140 187.13 110 2 2
+			name "siMaxClients"
+			rect -185 -130 183.13 18 2 2
 			decoration
 			visible 1
 			style 1
 			forecolor 1 1 1 1
-			type 6
 			textfont 1
-			textscale 0.35
-			feeder 43
-			elementWidth 120
-			elementHeight 24
-//			numcol			xpos	xwidth	textlen	  alignment
-			columns 4		4		140		50		  0
-							144		2		2		  0
-							146		2		2		  0
-							148		50		50		  0
-			notselectable
+			textscale 0.25
+			text "@MPUI_MAX_CLIENTS"
+		}
+		itemDef // max clients
+		{
+			name "siMaxClients"
+			rect -185 -130 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textAlignX 130
+			textfont 1
+			textscale 0.25
+			exp text( dvarString( "uiSi_MaxClients" ) )
+		}
+		itemDef // password protected
+		{
+			name "Si_isPrivate"
+			rect -185 -115 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textfont 1
+			textscale 0.25
+			text "@MPUI_IS_PRIVATE"
+		} 
+		itemDef // password protected
+		{
+			name "Si_isPrivate"
+			rect -185 -115 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textAlignX 130
+			textfont 1
+			textscale 0.25
+			exp text( dvarString( "uiSi_isPrivate" ) )
+		}
+		itemDef // hardcore
+		{
+			name "Si_Hardcore"
+			rect -185 -100 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textfont 1
+			textscale 0.25
+			text "@MPUI_RULES_HARDCORE"
+		}
+		itemDef // hardcore
+		{
+			name "Si_Hardcore"
+			rect -185 -100 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textAlignX 130
+			textfont 1
+			textscale 0.25
+			exp text( dvarString( "uiSi_Hardcore" ) )
+		}
+
+		itemDef // killcam
+		{
+			name "Si_KillCam"
+			rect -185 -85 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textfont 1
+			textscale 0.25
+			text "@MPUI_RULES_KILLCAM"
+		}
+		itemDef // killcam
+		{
+			name "Si_KillCam"
+			rect -185 -85 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textAlignX 130
+			textfont 1
+			textscale 0.25
+			exp text( dvarString( "uiSi_KillCam" ) )
+		}
+
+		itemDef // friendly fire
+		{
+			name "Si_ffType"
+			rect -185 -70 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textfont 1
+			textscale 0.25
+			text "@MPUI_RULES_FRIENDLY_FIRE"
+		}
+		itemDef // friendly fire
+		{
+			name "Si_ffType"
+			rect -185 -70 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textAlignX 130
+			textfont 1
+			textscale 0.25
+			exp text( dvarString( "uiSi_ffType" ) )
+		}
+
+		itemDef // mod name
+		{
+			name "Si_ModName"
+			rect -185 -55 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textfont 1
+			textscale 0.25
+			text "@MPUI_MOD"
+		}
+		itemDef // mod name
+		{
+			name "Si_ModName"
+			rect -185 -55 183.13 18 2 2
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textAlignX 130
+			textfont 1
+			textscale 0.25
+			exp text( dvarString( "uiSi_ModName" ) )
 		}
 		itemDef
 		{
@@ -203,15 +335,15 @@
 			type 6
 			textfont 1
 			textscale 0.25
-			feeder 44
+			feeder FEEDER_SERVERSTATUS
 			elementWidth 120
 			elementHeight 16
-//			numcol			xpos	xwidth	textlen	  alignment
-			columns 4		4		140		50		  0
-							144		2		2		  0
-							146		2		2		  0
-							148		50		50		  0
 			notselectable
+//			numcol			xpos	xwidth	textlen	  alignment
+			columns 4		8		2		2		  0
+							20		16		16		  0
+							100		4		4		  0
+							150		4		4		  0
 		}
 		itemDef
 		{
