@@ -64,10 +64,13 @@
 			text "GAME SETUP"
 		}
 		
+		
+		#include "ui_mp/gamerules.inc"
+
 		CHOICE_SEPERATOR( 0 )
 		CHOICE_BUTTON( 0, "maps", "MAPS", open "settings_map"; )
 		CHOICE_BUTTON( 1, "mode", "MODE", open "settings_gametype"; )
-		CHOICE_BUTTON( 2, "options", "OPTIONS", open "menu_xboxlive" ; )
+		CHOICE_BUTTON( 2, "options", "OPTIONS", LOCAL_GAMERULES_ACTION; )
 		CHOICE_SEPERATOR( 3 )
 		CHOICE_BUTTON_EX( 3, "intermission", "INTERMISSION: DISABLED", open "menu_playercard_icon_popup";, disabled when( 1 ) )
 		CHOICE_BUTTON_EX( 4, "password", "CHANGE PASSWORD", open "menu_xboxlive";, disabled when( 1 ) )
