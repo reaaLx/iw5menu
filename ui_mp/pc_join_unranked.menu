@@ -469,7 +469,7 @@
 			action
 			{
 				play "mouse_click";
-				uiScript "ServerSort" 1;
+				uiScript "ServerSort" 2;
 				setItemColor "grpListHeader" backColor 0.3 0.5 0.2 0.3;
 				setItemColor self "backColor" 0.6039 0.6353 0.6039 1;
 				setItemColor "grpColumn" backColor 0 0 0 0;
@@ -509,7 +509,7 @@
 			action
 			{
 				play "mouse_click";
-				uiScript "ServerSort" 2;
+				uiScript "ServerSort" 3;
 				setItemColor "grpListHeader" backColor 0.3 0.5 0.2 0.3;
 				setItemColor self "backColor" 0.6039 0.6353 0.6039 1;
 				setItemColor "grpColumn" backColor 0 0 0 0;
@@ -532,7 +532,7 @@
 			textAlign 8
 			textAlignX 2
 			textScale 0.25
-			text "@MENU_NUMPLAYERS"
+			text "Players"
 			exp rect x ( 367 )
 			exp rect w ( 48 )
 			onFocus
@@ -549,7 +549,7 @@
 			action
 			{
 				play "mouse_click";
-				uiScript "ServerSort" 3;
+				uiScript "ServerSort" 4;
 				setItemColor "grpListHeader" backColor 0.3 0.5 0.2 0.3;
 				setItemColor self "backColor" 0.6039 0.6353 0.6039 1;
 				setItemColor "grpColumn" backColor 0 0 0 0;
@@ -589,7 +589,7 @@
 			action
 			{
 				play "mouse_click";
-				uiScript "ServerSort" 4;
+				uiScript "ServerSort" 5;
 				setItemColor "grpListHeader" backColor 0.3 0.5 0.2 0.3;
 				setItemColor self "backColor" 0.6039 0.6353 0.6039 1;
 				setItemColor "grpColumn" backColor 0 0 0 0;
@@ -658,7 +658,7 @@
 			columns 8		6		22		10		  0
 							28		249		0		  0
 							28		90		80		  0
-							272		48		10		  0
+							272		48		20		  0
 							362		151		50		  0
 							412		22		50		  0
 							590		40		0		  0
