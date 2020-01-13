@@ -32,6 +32,18 @@
 		
 		itemDef
 		{
+			rect -64 3 276.667 24.233 1 1
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textfont 9
+			textalign 10
+			textscale 0.5
+			exp text ( "@MENU_OPTIONS_UPPER_CASE" )
+		}
+		itemDef
+		{
 			rect -272.733 3 266.667 23.633 3 1
 			decoration
 			visible 1
@@ -40,7 +52,6 @@
 			textfont 9
 			textalign 10
 			textscale 0.5
-			visible when ( ( 1 ) )
 			exp text ( gametypename( ) )
 		}
 		itemDef
@@ -57,11 +68,11 @@
 			visible when ( 1 )
 			exp text ( gametypedescription( ) )
 		}
-		
+
 		#include "ui_mp/tactical_map.inc"
 		#include "ui_mp/teamicon.inc"
 
-		//CHOICE_MENU_TITLE( "@MENU_OPTIONS_UPPER_CASE", 0 0 272 28 1 1 )
+		CHOICE_SEPERATOR( 0 )
 		CHOICE_BUTTON_EX( 0, "choose_class", "@MPUI_CHOOSE_CLASS", LOCAL_TEAMRESPONSE, disabled when ( !( ( localvarstring( "ui_team" ) == "marines" ) || ( localvarstring( "ui_team" ) == "opfor" ) ) ) )
 		
 		CHOICE_BUTTON_EX( 1, "change_team", "@MPUI_CHANGE_TEAM", scriptMenuResponse "changeteam";, disabled when ( ( !( ( dvarbool( "ui_allow_teamchange" ) && ( !dvarbool( "onlinegame" ) || dvarbool( "xblive_privatematch" ) ) ) ) ) ) )

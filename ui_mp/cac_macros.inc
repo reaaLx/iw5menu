@@ -400,8 +400,8 @@
 		
 // scriptmenus/changeclass.menu
 
-#define CHOICE_CAC_DEFAULT( itemIndex, textArg, actionArg, visArg ) \
-		CHOICE_BUTTON_FOCUS_VIS( itemIndex, textArg, actionArg, CAC_LOCALVARSTRINGS( itemIndex ), leaveFocusArg, visArg )
+#define CHOICE_CAC_DEFAULT( itemIndex, buttonName, textArg, actionArg, visArg ) \
+		CHOICE_BUTTON_FOCUS_VIS( itemIndex, buttonName, textArg, actionArg, CAC_LOCALVARSTRINGS( itemIndex ), leaveFocusArg, visArg )
 	
-#define CHOICE_CAC_CUSTOM( itemIndex, classNum, actionArg ) \
-		CHOICE_BUTTON_FOCUS_VIS( itemIndex, getplayerdata( "customClasses" , classNum , "name" ), actionArg, setLocalVarInt "classIndex" ( classNum ); CAC_LOCALVARSTRINGS2, leaveFocusArg, when ( getplayerdata( "customClasses" , classNum , "inUse" ) ) )
+#define CHOICE_CAC_CUSTOM( itemIndex, buttonName, classNum, actionArg ) \
+		CHOICE_BUTTON_FOCUS_VIS( itemIndex, buttonName, getplayerdata( "customClasses" , classNum , "name" ), actionArg, setLocalVarInt "classIndex" ( classNum ); CAC_LOCALVARSTRINGS2, leaveFocusArg, when ( getplayerdata( "customClasses" , classNum , "inUse" ) ) )
