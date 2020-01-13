@@ -1157,7 +1157,7 @@
 			{
 				if ( dvarInt( "ui_navbarBottom" ) != 7 )
 				{				
-//					uiScript "JoinServer";
+					uiScript "JoinServer";
 					setDvar "ui_navbarBottom" 7;
 				}	
 			}
