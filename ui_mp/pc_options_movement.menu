@@ -1,4 +1,5 @@
 #include "ui/menudef.h"
+#include "ui_mp/iw4_macros.inc"
 
 #define CHOICE_GROUP		"pc_options_movement"
 
