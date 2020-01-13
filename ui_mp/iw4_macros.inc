@@ -27,9 +27,23 @@
 				}
 		
 		#define DO_THE_SERVER_EXEC \
+				exec "xrequirelivesignin"; \
+				setDvar "systemlink" 0; \
+				setDvar "splitscreen" 0; \
 				setDvar "onlinegame" 1; \
+				exec "exec default_xboxlive.cfg"; \
+				setDvar "party_maxplayers" 18; \
+				setDvar "xblive_privateserver" 0; \
+				setDvar	"xblive_rankedmatch" 0; \
 				exec "xstartprivateparty"; \
-				open "createserver" ;
+				setDvar "ui_mptype" 0; \
+				exec "xcheckezpatch"; \
+				exec "exec default_xboxlive.cfg" \
+				setDvar "xblive_rankedmatch" 0; \
+				exec "ui_enumeratesaved"; \
+				setDvar "xblive_privateserver" 1; \
+				exec "xstartprivatematch"; \
+				open "createserver"; )
 		
 		#define SETUP_ACTION_START \
 				exec "selectStringTableEntryInDvar mp/didyouknow.csv 0 didyouknow"; \
