@@ -1,6 +1,6 @@
 # IW5Menu 
 
-all current files are work in progress 
+all files are current work in progress and are not final.
 feel free to contribute!
 
 ![alt tag](https://i.imgur.com/Ltksf1i.jpg)
