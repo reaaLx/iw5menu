@@ -1,7 +1,6 @@
 # IW5Menu 
 
-all files are current work in progress and are not final.
-feel free to contribute!
+# All files are current work in progress and are not final.
 
 ![alt tag](https://i.imgur.com/Ltksf1i.jpg)
 ![alt tag](https://i.imgur.com/yDQ1vzw.png)
