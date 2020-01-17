@@ -1,6 +1,6 @@
 # IW5Menu 
 
-# All files are current work in progress and are not final.
+# All files are currently work in progress and are due to change.
 
 ![alt tag](https://i.imgur.com/Ltksf1i.jpg)
 ![alt tag](https://i.imgur.com/yDQ1vzw.png)
