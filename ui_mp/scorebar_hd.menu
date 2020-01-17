@@ -5,22 +5,22 @@
 
 #include "ui/menudef.h"
 
-#define TEAM_IS_MARINES		(localVarString( ui_team ) == "marines")
-#define TEAM_IS_OPFOR		(localVarString( ui_team ) == "opfor")
+#define TEAM_IS_MARINES		( localVarString( ui_team ) == "marines")
+#define TEAM_IS_OPFOR		( localVarString( ui_team ) == "opfor")
 
 #define HUD_FOREGROUND_ALPHA 0.75
 
-#define NOT_SPECTATING (!spectatingClient())
+#define NOT_SPECTATING ( !spectatingClient() )
 	
-#define TEAM_IS_TIED	(team(score) == otherteam(score))
-#define TEAM_IS_WINNING (team(score) > otherteam(score))
-#define TEAM_IS_LOSING	(team(score) < otherteam(score))
+#define TEAM_IS_TIED	( team( score ) == otherteam( score ) )
+#define TEAM_IS_WINNING ( team( score ) > otherteam( score ) )
+#define TEAM_IS_LOSING	( team( score ) < otherteam( score ) )
 	
-#define PLAYER_IS_TIED		(player(score) == scoreatrank(1) && scoreatrank(1) == scoreatrank(2))
-#define PLAYER_IS_WINNING	(player(score) > scoreatrank(2))
-#define PLAYER_IS_LOSING	(player(score) < scoreatrank(1))
+#define PLAYER_IS_TIED		( player( score ) == scoreatrank( 1 ) && scoreatrank( 1 ) == scoreatrank( 2 ) )
+#define PLAYER_IS_WINNING	( player( score ) > scoreatrank( 2 ) )
+#define PLAYER_IS_LOSING	( player( score ) < scoreatrank( 1 ) )
 	
-#define SHOULD_DISPLAY_SCOREBAR (team( name ) != "TEAM_SPECTATOR")
+#define SHOULD_DISPLAY_SCOREBAR ( team( name ) != "TEAM_SPECTATOR" )
 
 {
 	menuDef

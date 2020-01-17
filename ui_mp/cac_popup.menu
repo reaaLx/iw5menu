@@ -18,6 +18,8 @@
 		fullscreen 1
 		onOpen
 		{
+			setDvar "ui_weapon_level_fake_primary";
+			setDvar "ui_weapon_level_fake_secondary";
 			setLocalVarInt "ui_buttonNavGroupOffset" ( 0 );
 			setLocalVarInt "ui_buttonNavGroupCurrent" ( 0 );
 			setLocalVarString "ui_buttonNavGroupName" ( "invalid" );
@@ -205,7 +207,22 @@
 		}
 		itemDef
 		{
-			rect -257 36.567 130 11.067 3 1
+			rect -257 36.567 258 10 3 1
+			decoration
+			visible 1
+			style 3
+			forecolor 1 1 1 1
+			background "white"
+			textscale 0.55
+			exp forecolor r ( 0.2 )
+			exp forecolor g ( 0.5 )
+			exp forecolor b ( 0.2 )
+			exp rect x ( ( 0 ) + ( ( ( ( ( 0 - 264 ) ) + 6 ) ) ) + ( 0 ) )
+			exp rect w ( dvarString( "ui_weapon_level_fake_primary" ) + 0 )
+		}
+		itemDef
+		{
+			rect -258 36.367 258 10 3 1
 			decoration
 			visible 1
 			style 1
@@ -215,7 +232,7 @@
 			textscale 0.2
 			exp rect x ( ( 0 ) + ( ( ( 0 - 264 ) ) ) + ( 7 ) )
 			visible when ( 1 )
-			exp text ( "Weapon Level N/A" )
+			exp text ( "Weapon Level " + dvarString( "ui_weapon_level_fake_primary" ) )
 		}
 		itemDef
 		{
@@ -320,6 +337,21 @@
 		}
 		itemDef
 		{
+			rect -258 112.7 258 10 3 1
+			decoration
+			visible 1
+			style 3
+			forecolor 1 1 1 1
+			background "white"
+			textscale 0.55
+			exp forecolor r ( 0.2 )
+			exp forecolor g ( 0.5 )
+			exp forecolor b ( 0.2 )
+			exp rect x ( ( 0 ) + ( ( ( ( ( 0 - 264 ) ) + 6 ) ) ) + ( 0 ) )
+			exp rect w ( dvarString( "ui_weapon_level_fake_secondary" ) + 0 )
+		}
+		itemDef
+		{
 			rect -139.333 112.366 140 70 3 1
 			decoration
 			visible 1
@@ -342,7 +374,7 @@
 			textscale 0.2
 			exp rect x ( ( 0 ) + ( ( ( 0 - 264 ) ) ) + ( 7 ) )
 			visible when ( 1 )
-			exp text ( "Weapon Level N/A" )
+			exp text ( "Weapon Level " + dvarString( "ui_weapon_level_fake_secondary" ) )
 		}
 		itemDef
 		{

@@ -300,10 +300,8 @@
 			name "modlist"
 			rect -266.667 19 220 330 2 1
 			style 1
-			forecolor 1 1 1 1
-			backcolor 0.5 0.5 0.5 0
-			outlinecolor 0.9 0.9 0.925 0
-			disablecolor 0.7 0.7 0.7 1
+			foreColor 1 1 1 1
+			outlineColor 0 0 0 0.2
 			type 6
 			textFont 1
 			textAlignY -8

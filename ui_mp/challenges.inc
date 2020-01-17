@@ -42,5 +42,5 @@ setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" ); \
 		#define LOCAL_CH_NAME( ch_name ) \
 				"@" + tablelookup( "mp/challengeTable.csv" , 5 , ch_name , 1 ) \
 
-		#define LOCAL_CH_BUTTON( itemIndex, nameArg, ch_name ) \
-				CHOICE_BUTTON_FOCUS_VIS( itemIndex, nameArg, LOCAL_CH_NAME( ch_name ), LOCAL_CH_ACTION( ch_name ), LOCAL_CH_FOCUS( ch_name ), CLEAR_CH_HINT, LOCAL_CH_VIS( ch_name ) )
+		#define LOCAL_CH_BUTTON( itemIndex, buttonName, ch_name ) \
+				CHOICE_BUTTON_FOCUS_VIS( itemIndex, buttonName, LOCAL_CH_NAME( ch_name ), LOCAL_CH_ACTION( ch_name ), LOCAL_CH_FOCUS( ch_name ), CLEAR_CH_HINT, LOCAL_CH_VIS( ch_name ) )
