@@ -1,4 +1,5 @@
 #include "ui/menudef.h"
+#include "ui_mp/iw4_macros.inc"
 
 #define CHOICE_GROUP		"class"
 
@@ -79,7 +80,9 @@
 
 		CHOICE_SEPERATOR( 2 )
 
-		CHOICE_BUTTON( 2, "options", "@MENU_OPTIONS", close "self"; open "pc_options_video"; execNow "set ui_allow_graphic_change 0"; )
+		CHOICE_BUTTON_VIS( 2, "options", "@MENU_OPTIONS", close "self"; open "pc_options_video"; execNow "set ui_allow_graphic_change 0";, when ( dvarString("ui_allowMoreOptions") == 0 ) )
+		CHOICE_BUTTON_VIS( 2, "options", "@MENU_OPTIONS", close "self"; open "options_graphics"; execNow "set ui_allow_graphic_change 0";, when ( dvarString("ui_allowMoreOptions") == 1 ) )
+
 		CHOICE_BUTTON( 3, "mute_player", "@MPUI_MUTE_PLAYERS", open "muteplayer"; close "self"; )
 		CHOICE_BUTTON_NOHI_VIS( 4, "end_game", "@MENU_END_GAME", open "popup_endgame", when ( ( dvarbool( "onlinegame" ) && !dvarbool( "xblive_privatematch" ) ) == 0 && ( dvarbool( "sv_running" ) ) ) )
 		CHOICE_BUTTON_NOHI_VIS( 4, "leave_game", "@MENU_LEAVE_GAME", ;, when ( ( dvarbool( "onlinegame" ) && !dvarbool( "xblive_privatematch" ) ) || !( dvarbool( "sv_running" ) ) ) )
