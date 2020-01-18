@@ -58,7 +58,7 @@
 		CHOICE_BUTTON( 0, "SWF_BUTTON_LIST_0", "@MPUI_CHALLENGES_CAPS", open "menu_challenges"; )
 		CHOICE_BUTTON( 1, "SWF_BUTTON_LIST_1", "@MPUI_HIGHLIGHTS_CAPS", open "menu_records"; )
 		CHOICE_BUTTON_EX( 2, "SWF_BUTTON_LIST_2", "@MENU_LEADERBOARDS_CAP", open "menu_leaderboards";, disabled when ( 1 ) )
-		CHOICE_BUTTON( 3, "SWF_BUTTON_LIST_3", "@MENU_OPTIONS_CAPS", open "pc_options_video"; )
+		CHOICE_BUTTON( 3, "SWF_BUTTON_LIST_3", "@MENU_OPTIONS_CAPS", open "main_options"; )
 		
 		CHOICE_SEPERATOR_VIS( 4, when ( ( dvarint( "xblive_privatematch" ) ) && ( ( ( localvarint( "ui_buttonNavGroupOffset" ) + ( 7 - 1 ) ) >= ( 4 ) && ( ( ( 4 ) - localvarint( "ui_buttonNavGroupOffset" ) ) >= 0 ) ) ) ) )
 		

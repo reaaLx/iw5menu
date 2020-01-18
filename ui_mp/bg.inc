@@ -24,6 +24,17 @@
 #endif		
 		itemDef
 		{
+			rect -426.667 -36 853.333 480 2 1
+			decoration
+			visible 1
+			style 3
+			forecolor 0 0 0 0.4
+			background "white"
+			textscale 0.55
+			visible when ( ( dvarbool( "cl_ingame" ) || dvarbool( "sv_running" ) ) )
+		}
+		itemDef
+		{
 			rect -574.85 0 1708 480 0 0
 			decoration
 			visible 1
