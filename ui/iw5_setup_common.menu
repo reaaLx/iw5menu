@@ -395,6 +395,34 @@
 		} \
 		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg )
 
+#define CHOICE_DVAREDIT( itemIndex, nameArg, textArg, dvarArg, maxCharsArg, actionArg ) \
+		CHOICE_DVAREDIT_VIS( itemIndex, nameArg, textArg, dvarArg, maxCharsArg, actionArg, 1 )
+		
+#define CHOICE_DVAREDIT_VIS( itemIndex, nameArg, textArg, dvarArg, maxCharsArg, actionArg, visArg ) \
+		CHOICE_NAVBAR_SHADOW( itemIndex, nameArg ) \
+		itemDef \
+		{ \
+			name nameArg \
+			rect CHOICE_ORIGIN( itemIndex ) CHOICE_SIZE_X CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
+			foreColor CHOICE_TEXTCOLOR \
+			style CHOICE_TEXTSTYLE \
+			background CHOICE_TEXT_HIGHLIGHT \
+			group "mw2_button" \
+			type ITEM_TYPE_EDITFIELD \
+			textAlign CHOICE_DVAR_TEXTALIGN \
+			textAlignX (CHOICE_DVAR_OFFSET_X - 10) \
+			textAlignY CHOICE_DVAR_OFFSET_Y \
+			textScale CHOICE_TEXTSIZE \
+			textFont CHOICE_TEXTFONT \
+			text " " \
+			dvar dvarArg \
+			maxChars maxCharsArg \
+			maxPaintChars maxCharsArg \
+			visible visArg \
+			CHOICE_SCRIPTS_ACTION( itemIndex, actionArg ) \
+		} \
+		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg )
+
 #define CHOICE_BIND( itemIndex, nameArg, textArg, dvarArg, actionArg ) \
 		CHOICE_BIND_VIS( itemIndex, nameArg, textArg, dvarArg, actionArg, 1 )
 

@@ -17,6 +17,7 @@
 		fullscreen 1
 		onOpen
 		{
+			focusFirst;
 			uiScript "LoadArenas";
 			uiScript "loadDemos";
 			setFocus "demoList";
@@ -28,7 +29,7 @@
 
 		#define BACKGROUND_BLUR
 		#include "ui_mp/bg.inc"
-
+/*
 		itemDef
 		{
 			rect -64 54.667 301.333 20 1 1
@@ -119,6 +120,7 @@
 			background "white"
 			textscale 0.55
 		}
+*/
 		itemDef
 		{
 			name "demoList"
@@ -126,9 +128,7 @@
             style 1
 			visible 1
 			forecolor 1 1 1 1
-			backcolor 0.5 0.5 0.5 0
 			outlinecolor 0.9 0.9 0.925 0
-			disablecolor 0.7 0.7 0.7 1
 			type 6
 			textfont 1
 			textscale 0.375
@@ -159,202 +159,28 @@
 			textscale 0.5
 			exp text ( "VAULT" )
 		}
-		itemDef
-		{
-            name "thumbnail"
-			rect 91 52.333 272 153.333 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 1 1 1 1
-			textscale 0.55
-			visible when( dvarString( "ui_demo_mapname" ) != "" )
-			exp material ( "preview_" + dvarString( "ui_demo_mapname" ) )
-		}
-		itemDef
-		{
-            name "thumbnail"
-			rect 91 52.333 272 153.333 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 1 1 1 1
-			textscale 0.55
-			visible when( dvarString( "ui_demo_mapname" ) == "" )
-			exp material ( "loadscreen_mp_bonusmaps" )
-		}
-		itemDef
-		{
-			rect 91 36 272 16.333 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.1569 0.1725 0.1608 1
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 52.333 272 10.667 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 1 1 1 1
-			background "gradient_top"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 195 272 -10.667 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 1 1 1 1
-			background "gradient_top"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 32.667 272 20.833 2 1
-			decoration
-			visible 1
-			style 1
-			forecolor 1 1 1 1
-			textfont 9
-			textalign 9
-			textscale 0.375
-			exp text ( dvarString( "ui_demo_mapname_localized" ) )
-		}
-		itemDef // demo_details header
-		{
-			rect 91 205.667 272 9.333 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.3098 0.349 0.2745 1
-			background "white"
-			textscale 0.55
-		}
-		itemDef // demo_list 1
-		{
-			rect 91 214.667 272 90 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.2118 0.2314 0.22 1
-			background "white"
-			textscale 0.55
-		}
-		itemDef // demo_list 2
-		{
-			rect 91 214.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
-		itemDef// demo_list 3
-		{
-			rect 91 232.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
-		itemDef// demo_list 4
-		{
-			rect 91 250.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
-		itemDef// demo_list 5
-		{
-			rect 91 268.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
-		itemDef // demo_list 6
-		{
-			rect 91 286.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
-		itemDef // demo_list 7
-		{
-			rect 91 304.667 272 10.5 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.3098 0.349 0.2745 1
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 214.667 272 10.667 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 1 1 1 1
-			background "gradient_top"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 294.667 272 -10.667 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 1 1 1 1
-			background "gradient_top"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 214.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 250.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect 91 286.667 272 18 2 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0 0 0 0.15
-			background "white"
-			textscale 0.55
-		}
+
+		PREPROC_SHADER_DRAW_VIS( 91 52.333 272 153.333 2 1, ORIGIN_NONE, ( "preview_" + dvarString( "ui_demo_mapname" ) ), 1 1 1 1, when( dvarString( "ui_demo_mapname" ) != "" ) )
+		PREPROC_SHADER_DRAW_VIS( 91 52.333 272 153.333 2 1, ORIGIN_NONE, "loadscreen_mp_bonusmaps", 1 1 1 1, when( dvarString( "ui_demo_mapname" ) == "" ) )
+
+		PREPROC_SHADER_DRAW( 91 36 272 16.333 2 1, ORIGIN_NONE, "white", 0.1569 0.1725 0.1608 1 )
+		PREPROC_SHADER_DRAW( 91 52.333 272 10.667 2 1, ORIGIN_NONE, "gradient_top", 1 1 1 1 )
+		PREPROC_SHADER_DRAW( 91 195 272 -10.667 2 1, ORIGIN_NONE, "gradient_top", 1 1 1 1 )
+
+		PREPROC_TEXT_DRAW( 91 32.667 272 20.833 2 1, ORIGIN_NONE, exp text( dvarString( "ui_demo_mapname_localized" ) ), 0.375, 0, 0, 9, 1 1 1 1 textfont 9 )
+
+		PREPROC_SHADER_DRAW( 91 205.667 272 9.333 2 1, ORIGIN_NONE, "white", 0.3098 0.349 0.2745 1 ) // header
+
+		PREPROC_SHADER_DRAW( 91 214.667 272 68 2 1, ORIGIN_NONE, "white", 0.2118 0.2314 0.22 1 ) // base frame
+		PREPROC_SHADER_DRAW( 91 214.667 272 18 2 1, ORIGIN_NONE, "white", 0 0 0 0.15 ) // author
+		PREPROC_SHADER_DRAW( 91 232.667 272 18 2 1, ORIGIN_NONE, "white", 0.2118 0.2314 0.22 1 ) // duration
+		PREPROC_SHADER_DRAW( 91 250.667 272 18 2 1, ORIGIN_NONE, "white", 0 0 0 0.15 ) // map
+		PREPROC_SHADER_DRAW( 91 268.667 272 18 2 1, ORIGIN_NONE, "white", 0.2118 0.2314 0.22 1 ) // gametype
+		PREPROC_SHADER_DRAW( 91 214.667 272 10.667 2 1, ORIGIN_NONE, "gradient_top", 1 1 1 1 )
+		PREPROC_SHADER_DRAW( 91 276.667 272 -10.667 2 1, ORIGIN_NONE, "gradient_top", 1 1 1 1 )
+		PREPROC_SHADER_DRAW( 91 286.667 272 9.333 2 1, ORIGIN_NONE, "white", 0.3098 0.349 0.2745 1 ) // header
+
+
 		itemDef
 		{
 			rect 91 214.667 272 18 2 1
@@ -365,7 +191,7 @@
 			textfont 3
 			textalign 8
 			textscale 0.383333
-			exp text ( "Creator" )
+			exp text ( "Author: " + dvarString( "ui_demo_author" ) )
 		}
 		itemDef
 		{
@@ -377,7 +203,7 @@
 			textfont 3
 			textalign 8
 			textscale 0.383333
-			exp text ( "Gametype" )
+			exp text ( "Duration: " + dvarString( "ui_demo_length" ) )
 		}
 		itemDef
 		{
@@ -389,7 +215,7 @@
 			textfont 3
 			textalign 8
 			textscale 0.383333
-			exp text ( "Map" )
+			exp text ( "Map: " + dvarString( "ui_demo_mapname_localized" ) + "(" + ( dvarString( "ui_demo_mapname" ) ) + ")" )
 		}
 		itemDef
 		{
@@ -401,32 +227,7 @@
 			textfont 3
 			textalign 8
 			textscale 0.383333
-			exp text ( "Duration" )
-		}
-        itemDef
-		{
-			rect 91 286.667 256 18 2 1
-			decoration
-			visible 1
-			style 1
-			forecolor 0.761 0.761 0.757 1
-			textfont 3
-			textalign 8
-			textscale 0.383333
-			exp text ( "Description" )
-		}
-		itemDef
-		{
-			rect 0 0 0 20 3 3
-			decoration
-			visible 1
-			forecolor 1 1 1 1
-			textfont 3
-			textalign 8
-			textscale 0.375
-			exp rect x ( ( 0 ) - ( 0 * 5 ) - ( 20 / 2 )  )
-			exp rect y ( ( ( 0 - 20.667 ) ) )
-			exp text ( "BACK ^2ESC" )
+			exp text ( "Gametype: " + dvarString( "ui_demo_gametype" ) )
 		}
 	}
 }

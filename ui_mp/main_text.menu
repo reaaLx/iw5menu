@@ -24,6 +24,7 @@
 		fullscreen 1
 		onOpen
 		{
+			setDvar "ui_allowMoreOptions" 0;
 			setdvar "ui_version_show" 0;
 			setLocalVarInt "ui_buttonNavGroupOffset" ( 0 );
 			setLocalVarInt "ui_buttonNavGroupCurrent" ( 0 );
