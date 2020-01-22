@@ -14,18 +14,12 @@
 		focuscolor 1 1 1 1
 		fullscreen 1
 		blurWorld 7
+		soundLoop "music_mainmenu_mp"
 		onOpen
 		{
 			setLocalVarInt "ui_buttonNavGroupOffset" ( 0 );
 			setLocalVarInt "ui_buttonNavGroupCurrent" ( 0 );
 			setLocalVarString "ui_buttonNavGroupName" ( "invalid" );
-			setLocalVarBool "ui_swfSelectionButtonVis" ( 0 );
-			setLocalVarBool "ui_swfSelectionBarVis" ( 0 );
-			setLocalVarBool "ui_swfSelectionDisabled" ( 0 );
-			setLocalVarBool "ui_swfPopupSelectionButtonVis" ( 0 );
-			setLocalVarBool "ui_swfPopupSelectionBarVis" ( 0 );
-			setLocalVarBool "ui_swfPopupSelectionDisabled" ( 0 );
-			setLocalVarString "ui_swfPopupContext" ( "invalid" );
 			focusfirst;
 		}
 		onClose

@@ -11,10 +11,12 @@
 	{
 		name "pc_theater_menu"
 		rect 0 0 640 480 0 0
-		style 1
-		forecolor 1 1 1 1
-		focuscolor 1 1 1 1
-		fullscreen 1
+		foreColor CHOICE_TEXTCOLOR
+		focusColor CHOICE_TEXTCOLOR
+		fadeCycle 1
+		fadeClamp 1
+		fadeAmount 0.1
+		blurWorld 7
 		onOpen
 		{
 			focusFirst;
@@ -29,98 +31,19 @@
 
 		#define BACKGROUND_BLUR
 		#include "ui_mp/bg.inc"
-/*
-		itemDef
-		{
-			rect -64 54.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 94.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 134.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 174.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 214.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 254.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 294.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 334.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-		itemDef
-		{
-			rect -64 374.667 301.333 20 1 1
-			decoration
-			visible 1
-			style 3
-			forecolor 0.251 0.271 0.247 0.309
-			background "white"
-			textscale 0.55
-		}
-*/
+
+		CHOICE_SEPERATOR( 0 )
+		PREPROC_SHADER_DRAW( -64 54.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 94.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 134.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 174.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 214.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 254.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 294.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 334.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+		PREPROC_SHADER_DRAW( -64 374.667 301.333 20 1 1, ORIGIN_NONE, "white", 0.251 0.271 0.247 0.309 )
+
+
 		itemDef
 		{
 			name "demoList"

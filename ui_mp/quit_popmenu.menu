@@ -4,8 +4,6 @@
 		name "quit_popmenu"
 		rect 0 0 0 0 2 2
 		popup
-		outOfBoundsClick
-		legacySplitScreenScale
 		forecolor 1 1 1 1
 		focuscolor 1 1 1 1
 		exp rect x ( 0 - ( 260 * 0.5 ) )

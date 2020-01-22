@@ -11,6 +11,7 @@
 		legacySplitScreenScale
 		foreColor 1 1 1 1
 		focusColor 1 1 1 1
+		soundLoop "music_mainmenu_mp"
 		onOpen
 		{
 			setLocalVarString "ui_info_name" ("");

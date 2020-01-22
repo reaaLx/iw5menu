@@ -354,7 +354,7 @@
 				&&tablelookup("mp/attachmentCombos.csv",0,getplayerdata("customClasses",localvarint("classIndex"),"weaponSetups",0,"attachment",0),tablegetrownum("mp/attachmentCombos.csv",0,tablelookup("mp/statsTable.csv",4,getplayerdata("customClasses",localvarint("classIndex"),"weaponSetups",0,"weapon"),cacTypeStat)))=="no"))) ) \
 
 		#define LOCAL_ATTACHMENT_BLING_NAME( cacTypeStat ) \
-				"@"+tablelookup("mp/attachmentTable.csv",4,tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat),3)
+				"@"+tablelookup("mp/attachmentTable.csv",4,tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat),3) \
 
 		#define LOCAL_ATTACHMENT_BLING_ACTION( cacTypeStat ) \
 				UI_TABDEPTH2(;,"@"+tablelookup("mp/attachmentTable.csv",4,tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat),3)) \
@@ -377,19 +377,16 @@
 					setPlayerData("attachmentNew","localVarString"("tempName"),"localVarString"("ui_selected_ref"),"false"); \
 				} \
 
-		#define LOCAL_ATTACHMENT_BLING_ITEM( itemIndex, cacTypeStat ) \
-				CHOICE_BUTTON_FOCUS_VIS_EX( itemIndex, LOCAL_ATTACHMENT_BLING_NAME( cacTypeStat ), LOCAL_ATTACHMENT_BLING_ACTION( cacTypeStat ), LOCAL_ATTACHMENT_BLING_FOCUS( cacTypeStat ), LOCAL_ATTACHMENT_BLING_NOFOCUS, \
+		#define LOCAL_ATTACHMENT_BLING_ITEM( itemIndex, nameArg, cacTypeStat ) \
+				CHOICE_BUTTON_FOCUS_VIS_EX( itemIndex, nameArg, LOCAL_ATTACHMENT_BLING_NAME( cacTypeStat ), LOCAL_ATTACHMENT_BLING_ACTION( cacTypeStat ), LOCAL_ATTACHMENT_BLING_FOCUS( cacTypeStat ), LOCAL_ATTACHMENT_BLING_NOFOCUS, \
 				when (tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat)!=""), \
-				disabled when (tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat)!="" \
-				&& (!isitemunlocked(getplayerdata("customClasses",localvarint("classIndex"),"weaponSetups",REF_IS_PRIMARY,"weapon")+" "+(tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat))) \
-				|| (!(localvarstring("ui_attachment1")==tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat)||localvarstring("ui_attachment2")==tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat)) \
-				&& ((!(tablelookup("mp/attachmentCombos.csv",0,tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat),tablegetrownum("mp/attachmentCombos.csv",0,localvarstring("ui_attachment1")))!="no") \
-				|| !(tablelookup("mp/attachmentCombos.csv",0,tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat),tablegetrownum("mp/attachmentCombos.csv",0,localvarstring("ui_attachment2")))!="no") \
-				|| localvarint("ui_numAttachments")==2))))) ) \
+				;) \
+				
+				/*
 				PREPROC_SHADER_DRAW( CHOICE_RECT( itemIndex ), ORIGIN_NONE, "popup_button_selected_bar_bling", 0.8 0.6 0.1 1 \
 				visible when (getplayerdata("customClasses",localvarint("classIndex"),"weaponSetups",0,"attachment",0) \
 				==tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat)||getplayerdata("customClasses",localvarint("classIndex"),"weaponSetups",0,"attachment",1) \
-				==tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat)) ) \
+				==tablelookup("mp/statsTable.csv",4,localvarstring("loadoutPrimary"),cacTypeStat)) ) \ */
 
 // SECONDARY ATTACHMENTS
 // ATTACHMENTS

@@ -1,4 +1,5 @@
 #include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
 
 #define CHOICE_GROUP		"cac_popup"
 
@@ -16,29 +17,12 @@
 		forecolor 1 1 1 1
 		focuscolor 1 1 1 1
 		fullscreen 1
+		soundLoop "music_mainmenu_mp"
 		onOpen
 		{
 			setDvar "ui_weapon_level_fake_primary";
 			setDvar "ui_weapon_level_fake_secondary";
-			setLocalVarInt "ui_buttonNavGroupOffset" ( 0 );
-			setLocalVarInt "ui_buttonNavGroupCurrent" ( 0 );
-			setLocalVarString "ui_buttonNavGroupName" ( "invalid" );
-			setLocalVarBool "ui_swfSelectionButtonVis" ( 0 );
-			setLocalVarBool "ui_swfSelectionBarVis" ( 0 );
-			setLocalVarBool "ui_swfSelectionDisabled" ( 0 );
-			setLocalVarBool "ui_swfPopupSelectionButtonVis" ( 0 );
-			setLocalVarBool "ui_swfPopupSelectionBarVis" ( 0 );
-			setLocalVarBool "ui_swfPopupSelectionDisabled" ( 0 );
-			setLocalVarString "ui_swfPopupContext" ( "invalid" );
-			setLocalVarString "ui_challenges_table" ( "mp/allChallengesTable.csv" );
-			setLocalVarString "ui_cac_details_selection" ( "all" );
-			setLocalVarBool "ui_shelfEnabled" ( 0 );
-			setLocalVarInt "ui_shelfCounter" ( 0 );
-			setLocalVarString "ui_challenges_table" ( "mp/allChallengesTable.csv" );
-			setLocalVarString "ui_info_filter" ( "all_challenges" );
-			setLocalVarString "ui_info_name" ( "@MENU_ALL" );
-			setLocalVarBool "ui_challenge_blade_vis" ( 1 );
-
+			setLocalVarString "ui_selected_ref" ( "" );
 			setLocalVarString "ui_streak1Name" ( getplayerdata( "killstreaks" , 0 ) );
 			setLocalVarString "ui_streak2Name" ( getplayerdata( "killstreaks" , 1 ) );
 			setLocalVarString "ui_streak3Name" ( getplayerdata( "killstreaks" , 2 ) );

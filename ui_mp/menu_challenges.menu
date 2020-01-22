@@ -15,6 +15,7 @@
 		forecolor 1 1 1 1
 		focuscolor 1 1 1 1
 		fullscreen 1
+		soundLoop "music_mainmenu_mp"
 		onOpen
 		{
 			focusfirst;
@@ -75,7 +76,7 @@
 		setLocalVarString "ui_hint_text" ( "@CHALLENGE_SECONDARY_WEAPONS_HINT" ), 
 		CLEAR_UI_HINT )		
 
-		CHOICE_BUTTON_FOCUS_EX( 4, "button_4", "@CHALLENGE_PERKS", ;,  
+		CHOICE_BUTTON_FOCUS( 4, "button_4", "@CHALLENGE_PERKS", ;,  
 		setLocalVarString "ui_selected_perk_ref" ( "specialty_scavenger" );
 		setLocalVarString "ui_selected_tier_ref" ( "@CHALLENGE_PERKS" ); 
 		setLocalVarString "ui_hint_text" ( "@CHALLENGE_PERK_CHALLENGES" ), 

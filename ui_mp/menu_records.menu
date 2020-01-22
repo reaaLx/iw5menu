@@ -16,6 +16,7 @@
 		forecolor 1 1 1 1
 		focuscolor 1 1 1 1
 		fullscreen 1
+		soundLoop "music_mainmenu_mp"
 		onOpen
 		{
 			setLocalVarInt "ui_pageIndex" ( 0 );

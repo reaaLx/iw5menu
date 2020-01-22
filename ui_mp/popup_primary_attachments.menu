@@ -17,6 +17,8 @@
 		forecolor 1 1 1 1
 		focuscolor 1 1 1 1
 		fullscreen 1
+		soundLoop "music_mainmenu_mp"
+
 		execKey 168
 		{
 			if ( localvarstring( "ui_selected_ref" ) != "none" && !isitemunlocked( getplayerdata( "customClasses" , localvarint( "classIndex" ) , "weaponSetups" , 0 , "weapon" ) + " " + localvarstring( "ui_selected_ref" ) ) )
@@ -102,7 +104,7 @@
 		setLocalVarString "ui_weapon_ref" ( getplayerdata( "customClasses" , localvarint( "classIndex" ) , "weaponSetups" , 0 , "weapon" ) );
 		setLocalVarString "ui_unlock_ref" ( localvarstring( "ui_weapon_ref" ) + " " + "none" );
 		setLocalVarString "ui_challenge_ref" ( tablelookup( "mp/unlockTable.csv" , 0 , localvarstring( "ui_unlock_ref" ) , 3 ) );
-		setLocalVarInt "ui_challenge_state" ( 1 );LOCAL_CH_REF( "ch_marksman_" );, setLocalVarString "tempName" ( getplayerdata( "customClasses" , localvarint( "classIndex" ) , "weaponSetups" , 0 , "weapon" ) ); if ( localvarstring( "ui_selected_ref" ) != "" ) { setPlayerData( "attachmentNew" , "localVarString" ( "tempName" ) , "localVarString" ( "ui_selected_ref" ) , "false" ); };, ; )
+		setLocalVarInt "ui_challenge_state" ( 1 ); LOCAL_CH_REF( "ch_marksman_" );, setLocalVarString "tempName" ( getplayerdata( "customClasses" , localvarint( "classIndex" ) , "weaponSetups" , 0 , "weapon" ) ); if ( localvarstring( "ui_selected_ref" ) != "" ) { setPlayerData( "attachmentNew" , "localVarString" ( "tempName" ) , "localVarString" ( "ui_selected_ref" ) , "false" ); };, ; )
 
 		LOCAL_ATTACHMENT_ITEM( 1, "swf_01", 11 )
 		LOCAL_ATTACHMENT_ITEM( 2, "swf_02", 12 )

@@ -1,4 +1,5 @@
 #include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
 
 #define CHOICE_GROUP		"menu_cac_assault"
 
@@ -21,6 +22,7 @@
 		fadeClamp 1
 		fadeAmount 0.1
 		blurWorld 5
+		soundLoop "music_mainmenu_mp"
 		onOpen
 		{
 			focusfirst setPlayerData( "featureNew" , "cac" , "false" );

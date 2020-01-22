@@ -1,6 +1,8 @@
 #include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+#include "ui_mp/iw4_macros.inc"
 
-#define CHOICE_GROUP		"menu_challenge_details"
+#define CHOICE_GROUP	"menu_challenge_details"
 
 #include "ui/iw5_setup_common.menu"
 #include "ui_mp/menustyle.inc"
@@ -11,12 +13,10 @@
 		rect 0 0 640 480 0 0
 		foreColor CHOICE_TEXTCOLOR
 		focusColor CHOICE_TEXTCOLOR
-		fullscreen 1
 		fadeCycle 1
 		fadeClamp 1
 		fadeAmount 0.1
-		blurWorld 5
-		soundLoop "music_mainmenu_mp"
+		blurWorld 7
 		onOpen
 		{
 			focusfirst;
@@ -108,6 +108,113 @@
 			exp forecolor g ( 0.654902 )
 			exp forecolor b ( 0.603922 )
 		}
+#define VIS_WHEN_CHECK( statNum ) \
+		when ( tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) != "" && !( int( tablelookup( "mp/allChallengesTable.csv" , 0 , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) , 6 + ( ( int( max( getplayerdata( "challengeState" , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) ) , 1 ) ) - 1 ) * 2 ) ) ) == "" ) && !( ( tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 1 ) == "tier_prestige" ) && !isitemunlocked( "tier_prestige" ) ) )
+
+#define CH_PROGRESS( IW5_CHOICE_Y, statNum ) \
+		itemDef \
+		{ \
+			rect 288.667 0 122 9.333 1 1 \
+			decoration \
+			visible 1 \
+			style 3 \
+			forecolor 0.2 0.5 0.2 1 \
+			background "white" \
+			textscale 0.55 \
+			exp rect y ( IW5_CHOICE_Y ) \
+			exp rect w ( ( ( getplayerdata( "challengeProgress" , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) ) - 0 ) / ( int( tablelookup( "mp/allChallengesTable.csv" , 0 , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) , 6 + ( ( int( max( getplayerdata( "challengeState" , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) ) , 1 ) ) - 1 ) * 2 ) ) ) - 0 ) ) * 40 ) \
+			visible when ( tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) != "" && !( ( tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 1 ) == "tier_prestige" ) && !isitemunlocked( "tier_prestige" ) ) ) \
+		}
+		
+#define CH_DONE_TEXT( IW5_CHOICE_Y, statNum ) \
+		itemDef \
+		{ \
+			rect 288.667 0 122 19.567 1 1 \
+			decoration \
+			visible 1 \
+			style 1 \
+			forecolor 1 1 1 1 \
+			textfont 3 \
+			textalign 9 \
+			textscale 0.375 \
+			text "@MPUI_DONE_CAPS" \
+			exp rect y ( IW5_CHOICE_Y ) \
+			visible when ( tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) != "" && ( int( tablelookup( "mp/allChallengesTable.csv" , 0 , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) , 6 + ( ( int( max( getplayerdata( "challengeState" , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 0 ) ) , 1 ) ) - 1 ) * 2 ) ) ) == "" ) && !( ( tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , statNum , 1 ) == "tier_prestige" ) && !isitemunlocked( "tier_prestige" ) ) ) \
+		}
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 39.333 122 9.333 1 1,  ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 0 ) )
+		CH_PROGRESS( 39.333, 0 )
+		CH_DONE_TEXT( 33.333, 0 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 59.333 122 9.333 1 1,  ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 1 ) )
+		CH_PROGRESS( 59.333, 1 )
+		CH_DONE_TEXT( 53.333, 1 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 79.333 122 9.333 1 1,  ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 2 ) )
+		CH_PROGRESS( 79.333, 2 )
+		CH_DONE_TEXT( 73.333, 2 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 99.333 122 9.333 1 1,  ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 3 ) )
+		CH_PROGRESS( 99.333, 3 )
+		CH_DONE_TEXT( 93.333, 3 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 119.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 4 ) )
+		CH_PROGRESS( 119.333, 4 )
+		CH_DONE_TEXT( 113.333, 4 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 139.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 5 ) )
+		CH_PROGRESS( 139.333, 5 )
+		CH_DONE_TEXT( 133.333, 5 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 159.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 6 ) )
+		CH_PROGRESS( 159.333, 6 )
+		CH_DONE_TEXT( 153.333, 6 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 179.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 7 ) )
+		CH_PROGRESS( 179.333, 7 )
+		CH_DONE_TEXT( 173.333, 7 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 199.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 8 ) )
+		CH_PROGRESS( 199.333, 8 )
+		CH_DONE_TEXT( 193.333, 8 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 219.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 9 ) )
+		CH_PROGRESS( 219.333, 9 )
+		CH_DONE_TEXT( 213.333, 9 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 239.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 10 ) )
+		CH_PROGRESS( 239.333, 10 )
+		CH_DONE_TEXT( 233.333, 10 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 259.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 11 ) )
+		CH_PROGRESS( 259.333, 11 )
+		CH_DONE_TEXT( 253.333, 11 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 279.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 12 ) )
+		CH_PROGRESS( 279.333, 12 )
+		CH_DONE_TEXT( 273.333, 12 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 299.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 13 ) )
+		CH_PROGRESS( 299.333, 13 )
+		CH_DONE_TEXT( 293.333, 13 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 319.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 14 ) )
+		CH_PROGRESS( 319.333, 14 )
+		CH_DONE_TEXT( 313.333, 14 )
+
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 339.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 15 ) )
+		CH_PROGRESS( 339.333, 14 )
+		CH_DONE_TEXT( 333.333, 14 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 359.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 16 ) )
+		CH_PROGRESS( 359.333, 14 )
+		CH_DONE_TEXT( 352.333, 14 )
+
+		PREPROC_SHADER_DRAW_VIS( 288.667 379.333 122 9.333 1 1, ORIGIN_NONE, "white", 0 0 0 1, VIS_WHEN_CHECK( 17 ) )
+		CH_PROGRESS( 379.333, 14 )
+		CH_DONE_TEXT( 373.333, 14 )
+
 		itemDef // challenge title 1
 		{
 			rect 133.333 6.7 186.667 92.5 2 1

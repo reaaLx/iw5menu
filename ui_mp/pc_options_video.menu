@@ -1,7 +1,8 @@
 #include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
 #include "ui_mp/iw4_macros.inc"
 
-#define CHOICE_GROUP		"pc_options_video"
+#define CHOICE_GROUP	"pc_options_video"
 
 #include "ui/iw5_setup_common.menu"
 #include "ui_mp/menustyle.inc"
@@ -100,6 +101,10 @@
 		#undef CHOICE_TEXT_HIGHLIGHT
 		#define CHOICE_TEXT_HIGHLIGHT "gradient_center"
 				
+		PREPROC_SHADER_DRAW( 435 140.667 80 6 1 1, ORIGIN_NONE, "white", 0 0 0 1 )
+		//PREPROC_SHADER_DRAW( 438 133.334 80 6 1 1, ORIGIN_NONE, "white", 1 1 1 1 exp rect w( dvarFloat( "profileMenuOption_Gamma" ) + 0.8 ) )
+
+
 		CHOICE_DVARENUMLIST( 		20, "videomode", 		"@MENU_VIDEO_MODE",		"ui_r_mode", "r_mode", 	setlocalVarBool "ui_showApply" ( 1 ) ) 
 		CHOICE_DVARYESNO( 			21, "d3d9x",			"@MENU_D3D9EX",			"r_useD3D9Ex", 			setlocalVarBool "ui_showApply" ( 1 ) ) 
 		CHOICE_DVARYESNO( 			22, "fullscreen", 		"@MENU_FULLSCREEN", 	"ui_r_fullscreen", 		setLocalVarBool "ui_showApply" ( 1 ); exec "vid_xpos 0;vid_ypos 0"; )

@@ -6,7 +6,7 @@
 		rect 0 0 640 480
 		focusColor 1 1 1 1
 		foreColor 1 1 1 1
-		//soundLoop "music_mainmenu_mp"
+		soundLoop "music_mainmenu_mp"
 		fadeCycle 1
 		fadeClamp 1
 		fadeAmount 0.1

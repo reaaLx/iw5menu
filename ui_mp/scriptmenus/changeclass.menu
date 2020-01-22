@@ -86,6 +86,11 @@
 		CHOICE_CAC_CUSTOM( 12, "buttonName_12", 7, scriptmenuresponse "custom8"; )
 		CHOICE_CAC_CUSTOM( 13, "buttonName_13", 8, scriptmenuresponse "custom9"; )
 		CHOICE_CAC_CUSTOM( 14, "buttonName_14", 9, scriptmenuresponse "custom10"; )
+		CHOICE_CAC_CUSTOM( 15, "buttonName_15", 10, scriptmenuresponse "custom11"; )
+		CHOICE_CAC_CUSTOM( 16, "buttonName_16", 11, scriptmenuresponse "custom12"; )
+		CHOICE_CAC_CUSTOM( 17, "buttonName_17", 12, scriptmenuresponse "custom13"; )
+		CHOICE_CAC_CUSTOM( 18, "buttonName_18", 13, scriptmenuresponse "custom14"; )
+		CHOICE_CAC_CUSTOM( 19, "buttonName_19", 14, scriptmenuresponse "custom15"; )
 
 		#include "ui_mp/cac_loadout_ingame.inc"
 	}

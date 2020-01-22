@@ -638,11 +638,22 @@
 			textscale 0.375
 			exp rect x ( 132.5 )
 			exp rect y ( ( 387.333 ) )
-			exp text ( "Challenges ^2F1"/*"@PLATFORM_CHALLENGES_SHORTCUT"*/ )
+			exp text ( locString("@MENU_CHALLENGES" ) + " " + "^2F1" )
 			execKeyInt 167
 			{
-				setLocalVarBool "ui_challenges_online" ( dvarbool( "onlinegame" ) ) );
-				open "challenges_popup";
+				if ( ( tablelookup( "mp/challengeTable.csv" , 6 , localvarstring( "loadoutPrimary" ) , 4 ) ) != "" )
+				{
+					setLocalVarString "ui_challengeTierTable" ( tablelookup( "mp/challengeTable.csv" , 6 , localvarstring( "loadoutPrimary" ) , 4 ) );
+					open "menu_challenge_details";
+				}
+			}
+			execKeyInt 168
+			{
+				if ( ( tablelookup( "mp/challengeTable.csv" , 6 , localvarstring( "loadoutSecondary" ) , 4 ) ) != "" )
+				{
+					setLocalVarString "ui_challengeTierTable" ( tablelookup( "mp/challengeTable.csv" , 6 , localvarstring( "loadoutSecondary" ) , 4 ) );
+					open "menu_challenge_details";
+				}
 			}
 		}
 		itemDef // challenge 1 black bar
@@ -654,7 +665,6 @@
 			forecolor 0 0 0 1
 			background "white"
 			textscale 0.55
-			//visible when ( ( ( ( getsortedchallengecount( localvarstring( "ui_info_filter" ) ) > 0 ) && ( !dvarbool( "onlinegame" ) || ( !dvarbool( "splitscreen" ) && !dvarbool( "xblive_privatematch" ) ) ) && localvarbool( "ui_challenge_blade_vis" ) ) ) )
 		}
 		itemDef // challenge 1 white bar
 		{
@@ -678,9 +688,22 @@
 			textfont 3
 			textalign 10
 			textscale 0.340278
-			//visible when ( ( ( ( getsortedchallengecount( localvarstring( "ui_info_filter" ) ) > 0 ) && ( !dvarbool( "onlinegame" ) || ( !dvarbool( "splitscreen" ) && !dvarbool( "xblive_privatematch" ) ) ) && localvarbool( "ui_challenge_blade_vis" ) ) ) )
-			//exp text ( locstring( "@" + tablelookup( "mp/statsTable.csv" , 4 , localvarstring( "loadoutPrimary" ) , 3 ) ) + locstring( "@" + tablelookup( "mp/allChallengesTable.csv" , 0 , tablelookupbyrow( localvarstring( "ui_challengeTierTable" ) , 0 , 0 ) , 3 ) ) )
-			exp text ( "Challenge N/A" )
+			//visible when ( localvarstring( "ui_selected_ref" ) != "" && !( int( tablelookup( "mp/allChallengesTable.csv" , 0 , localvarstring( "ui_selected_ref" ) , 6 + ( ( int( max( getplayerdata( "challengeState" , localvarstring( "ui_selected_ref" ) ) , 1 ) ) - 1 ) * 2 ) ) ) == "" ) )
+			//exp text ( locstring( "@" + tablelookup( "mp/allChallengesTable.csv" , 0 , localvarstring( "ui_selected_ref" ) , 1 ) ) + locstring( "@" + tablelookup( "mp/allChallengesTable.csv" , 0 , localvarstring( "ui_selected_ref" ) , 3 ) + "_" + int( max( getplayerdata( "challengeState" , localvarstring( "ui_selected_ref" ) ) , 1 ) ) ) )
+			exp text ( "@" + tablelookup( "mp/statsTable.csv" , 4 , localvarstring( "loadoutPrimary" ) , 3 ) )
+		}
+		itemDef // challenge 1 text #2
+		{
+			rect -34.167 341.333 246.667 19.567 1 1
+			decoration
+			visible 1
+			style 1
+			forecolor 1 1 1 1
+			textfont 3
+			textalign 10
+			textscale 0.340278
+			//visible when ( localvarstring( "ui_selected_ref" ) != "" && ( int( tablelookup( "mp/allChallengesTable.csv" , 0 , localvarstring( "ui_selected_ref" ) , 6 + ( ( int( max( getplayerdata( "challengeState" , localvarstring( "ui_selected_ref" ) ) , 1 ) ) - 1 ) * 2 ) ) ) == "" ) )
+			//exp text ( locstring( "@" + tablelookup( "mp/allChallengesTable.csv" , 0 , localvarstring( "ui_selected_ref" ) , 1 ) ) + locstring( "@" + tablelookup( "mp/allChallengesTable.csv" , 0 , localvarstring( "ui_selected_ref" ) , 3 ) + "_" + int( max( getplayerdata( "challengeState" , localvarstring( "ui_selected_ref" ) ) , 1 ) ) - 1 ) )
 		}
 		itemDef  // challenge 2 black bar
 		{
@@ -716,5 +739,5 @@
 			textalign 10
 			textscale 0.340278
 			//visible when ( ( ( ( getsortedchallengecount( localvarstring( "ui_info_filter" ) ) > 0 ) && ( !dvarbool( "onlinegame" ) || ( !dvarbool( "splitscreen" ) && !dvarbool( "xblive_privatematch" ) ) ) && localvarbool( "ui_challenge_blade_vis" ) ) && ( getsortedchallengecount( localvarstring( "ui_info_filter" ) ) > 1 ) ) )
-			exp text ( "Challenge N/A" )
+			exp text ( "@" + tablelookup( "mp/statsTable.csv" , 4 , localvarstring( "loadoutSecondary" ) , 3 ) )
 		}
