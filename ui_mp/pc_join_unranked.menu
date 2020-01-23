@@ -653,7 +653,7 @@
 			feeder 2
 			elementWidth 120
 			elementHeight 15
-			exp rect h ( 291 )
+			exp rect h ( 291 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 //			numcol			xpos	xwidth	textlen	  alignment
 			columns 8		6		22		10		  0
 							28		249		0		  0
@@ -691,7 +691,7 @@
 			textScale 0.55
 			exp rect x ( 6 )
 			exp rect w ( 22 )
-			exp rect h ( 291 )
+			exp rect h ( 291 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 		}
 		itemDef
 		{
@@ -708,7 +708,7 @@
 			textScale 0.55
 			exp rect x ( 28 )
 			exp rect w ( 249 )
-			exp rect h ( 291 )
+			exp rect h ( 291 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 		}
 		itemDef
 		{
@@ -725,7 +725,7 @@
 			textScale 0.55
 			exp rect x ( 277 )
 			exp rect w ( 90 )
-			exp rect h ( 291 )
+			exp rect h ( 291 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 		}
 		itemDef
 		{
@@ -742,7 +742,7 @@
 			textScale 0.55
 			exp rect x ( 367 )
 			exp rect w ( 48 )
-			exp rect h ( 291 )
+			exp rect h ( 291 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 		}
 		itemDef
 		{
@@ -759,7 +759,7 @@
 			textScale 0.55
 			exp rect x ( 415 )
 			exp rect w ( 151 )
-			exp rect h ( 291 )
+			exp rect h ( 291 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 		}
 		itemDef
 		{
@@ -776,7 +776,7 @@
 			textScale 0.55
 			exp rect x ( 566 )
 			exp rect w ( 64 )
-			exp rect h ( 291 )
+			exp rect h ( 291 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 		}
 		itemDef
 		{
@@ -788,7 +788,7 @@
 			foreColor 1 1 1 1
 			backColor 0.3686 0.4431 0.3333 1
 			textScale 0.55
-			exp rect y ( 415 )
+			exp rect y ( 415 - ( menuisopen( "filter_popmenu" ) * 110 ) )
 		}
 		itemDef
 		{

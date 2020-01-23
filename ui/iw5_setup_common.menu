@@ -552,7 +552,7 @@
 		onFocus \
 		{ \
 			onFocusArg \
-			play "iw5_mouse_over"; \
+			play "mouse_over"; \
 			setItemColor self backcolor CHOICE_HIGHLIGHT_COLOR; \
 			setLocalVarBool "ui_menuAButton" ( 1 ); \
 		} \
@@ -564,7 +564,7 @@
 		} \
 		action \
 		{ \
-			play "iw5_mouse_click"; \
+			play "mouse_click"; \
 			actionArg \
 		}
 #define CHOICE_KEYBINDHELP \

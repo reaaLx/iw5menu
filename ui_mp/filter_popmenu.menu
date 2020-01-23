@@ -1,47 +1,15 @@
-/*********************************************************
-***************** Dumped by aerosoul94 *******************
-*********************************************************/
-
 {
 	menuDef
 	{
 		name "filter_popmenu"
-		rect 6 415 624 0 0 0
+		rect 6 315 624 0 0 0
 		popup
-		outOfBoundsClick
 		style 1
 		forecolor 1 1 1 1
 		focuscolor 1 1 1 1
-		//exp rect y ( ( ( ( 70 + 24 + 3 + 6 ) + 16 + 2 ) + ( select( ( localvarint( "ui_sbFilterPanel" ) == 0 ) , ( 480 - ( ( 70 + 24 + 3 + 6 ) + 16 + 2 ) - 62 - 3 - 3 ) , ( select( ( localvarint( "ui_sbFilterPanel" ) == 1 ) , ( 480 - ( ( 70 + 24 + 3 + 6 ) + 16 + 2 ) - 62 - 100 - 3 - 5 ) , ( 480 - ( ( 70 + 24 + 3 + 6 ) + 16 + 2 ) - 62 - 100 - 100 - 3 ) ) ) ) ) ) + 9 )
-		//exp rect w ( ( select( ( localvarint( "ui_sbFilterPanel" ) == 0 ) , 0 , ( select( ( localvarint( "ui_sbFilterPanel" ) == 1 ) , 100 , ( 100 + 100 ) ) ) ) ) )
-		onOpen
-		{
-			setLocalVarInt "ui_sbFilterPanel" ( 1 );
-		}
-		onClose
-		{
-			setLocalVarInt "ui_sbFilterPanel" ( 0 );
-		}
 		onEsc
 		{
-			if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-			{
-				setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-				setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-				uiScript "RefreshFilter";
-			}
-			if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-			{
-				setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-				setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-				uiScript "RefreshFilter";
-			}
-			if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-			{
-				setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-				uiScript "RefreshFilter";
-			}
-			close self;
+			close "self";
 		}
 		itemDef
 		{
@@ -52,11 +20,12 @@
 			forecolor 0.1 0.1 0.1 0.5
 			background "white"
 			textscale 0.55
+			visible when ( menuisopen( "filter_popmenu" ) )
 		}
 		itemDef
 		{
 			name "filterPanel"
-			rect 6 415 624 0 0 0
+			rect 0 0 624 100 0 0
 			decoration
 			visible 1
 			style 1
@@ -65,9 +34,7 @@
 			forecolor 0.9 0.9 0.95 1
 			backcolor 0.25 0.25 0.25 1
 			bordercolor 0.5 0.5 0.5 0.5
-			type 8
 			textscale 0.55
-			//exp rect h ( ( select( ( localvarint( "ui_sbFilterPanel" ) == 0 ) , 0 , ( select( ( localvarint( "ui_sbFilterPanel" ) == 1 ) , 100 , ( 100 + 100 ) ) ) ) ) )
 		}
 		itemDef
 		{
@@ -101,39 +68,19 @@
 			action
 			{
 				play "mouse_click";
-				if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-				{
-					setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-					setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-				{
-					setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-					setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-				{
-					setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-					uiScript "RefreshFilter";
-				}
 				setLocalVarBool "ui_showApply" ( 1 );
-				uiScript "RefreshFilter" ;;
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarbool( "ui_browserShowFull" ) ) , "@MENU_SB_TOOLTIP_FILTER_FULL_YES" , "@MENU_SB_TOOLTIP_FILTER_FULL_NO" ) );
+				uiScript "RefreshFilter";
 			}
 			onFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 0 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarbool( "ui_browserShowFull" ) ) , "@MENU_SB_TOOLTIP_FILTER_FULL_YES" , "@MENU_SB_TOOLTIP_FILTER_FULL_NO" ) );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -185,39 +132,18 @@
 			action
 			{
 				play "mouse_click";
-				if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-				{
-					setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-					setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-				{
-					setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-					setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-				{
-					setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-					uiScript "RefreshFilter";
-				}
-				setLocalVarBool "ui_showApply" ( 1 );
-				uiScript "RefreshFilter" ;;
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarbool( "ui_browserShowEmpty" ) ) , "@MENU_SB_TOOLTIP_FILTER_EMPTY_YES" , "@MENU_SB_TOOLTIP_FILTER_EMPTY_NO" ) );
+				uiScript "RefreshFilter";
 			}
 			onFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 1 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarbool( "ui_browserShowEmpty" ) ) , "@MENU_SB_TOOLTIP_FILTER_EMPTY_YES" , "@MENU_SB_TOOLTIP_FILTER_EMPTY_NO" ) );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -271,39 +197,19 @@
 			action
 			{
 				play "mouse_click";
-				if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-				{
-					setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-					setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-				{
-					setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-					setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-				{
-					setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-					uiScript "RefreshFilter";
-				}
 				setLocalVarBool "ui_showApply" ( 1 );
 				uiScript "RefreshFilter" ;;
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserHardcore" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_HARDCORE_ALL" , ( select( dvarint( "ui_browserHardcore" ) , "@MENU_SB_TOOLTIP_FILTER_HARDCORE_YES" , "@MENU_SB_TOOLTIP_FILTER_HARDCORE_NO" ) ) ) );
 			}
 			onFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 2 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserHardcore" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_HARDCORE_ALL" , ( select( dvarint( "ui_browserHardcore" ) , "@MENU_SB_TOOLTIP_FILTER_HARDCORE_YES" , "@MENU_SB_TOOLTIP_FILTER_HARDCORE_NO" ) ) ) );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -317,7 +223,7 @@
 			textalign 6
 			textalignx -102.667
 			textscale 0.375
-			text "@MENU_HARDCORE"
+			text "Hardcore"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 0 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 2 ) )
 			visible when ( 1 )
@@ -357,39 +263,18 @@
 			action
 			{
 				play "mouse_click";
-				if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-				{
-					setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-					setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-				{
-					setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-					setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-				{
-					setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-					uiScript "RefreshFilter";
-				}
-				setLocalVarBool "ui_showApply" ( 1 );
-				uiScript "RefreshFilter" ;;
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserShowPassword" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_PASSWORD_ALL" , ( select( dvarint( "ui_browserShowPassword" ) , "@MENU_SB_TOOLTIP_FILTER_PASSWORD_YES" , "@MENU_SB_TOOLTIP_FILTER_PASSWORD_NO" ) ) ) );
+				uiScript "RefreshFilter";
 			}
 			onFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 3 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserShowPassword" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_PASSWORD_ALL" , ( select( dvarint( "ui_browserShowPassword" ) , "@MENU_SB_TOOLTIP_FILTER_PASSWORD_YES" , "@MENU_SB_TOOLTIP_FILTER_PASSWORD_NO" ) ) ) );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -403,7 +288,7 @@
 			textalign 6
 			textalignx -102.667
 			textscale 0.375
-			text "@MENU_PASSWORD3"
+			text "Password"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 0 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 3 ) )
 			visible when ( 1 )
@@ -443,39 +328,19 @@
 			action
 			{
 				play "mouse_click";
-				if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-				{
-					setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-					setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-				{
-					setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-					setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-				{
-					setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-					uiScript "RefreshFilter";
-				}
 				setLocalVarBool "ui_showApply" ( 1 );
-				uiScript "RefreshFilter" ;;
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserKillcam" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_KILLCAM_ALL" , ( select( dvarint( "ui_browserKillcam" ) , "@MENU_SB_TOOLTIP_FILTER_KILLCAM_YES" , "@MENU_SB_TOOLTIP_FILTER_KILLCAM_NO" ) ) ) );
+				uiScript "RefreshFilter";
 			}
 			onFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 0 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserKillcam" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_KILLCAM_ALL" , ( select( dvarint( "ui_browserKillcam" ) , "@MENU_SB_TOOLTIP_FILTER_KILLCAM_YES" , "@MENU_SB_TOOLTIP_FILTER_KILLCAM_NO" ) ) ) );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -489,7 +354,7 @@
 			textalign 6
 			textalignx -102.667
 			textscale 0.375
-			text "@MENU_VIEW_KILLCAM"
+			text "Killcam"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 1 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 0 ) )
 			visible when ( 1 )
@@ -529,39 +394,18 @@
 			action
 			{
 				play "mouse_click";
-				if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-				{
-					setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-					setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-				{
-					setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-					setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-				{
-					setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-					uiScript "RefreshFilter";
-				}
-				setLocalVarBool "ui_showApply" ( 1 );
 				uiScript "RefreshFilter" ;;
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserFriendlyfire" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_FRIENDLY_FIRE_ALL" , ( select( dvarint( "ui_browserFriendlyfire" ) , "@MENU_SB_TOOLTIP_FILTER_FRIENDLY_FIRE_YES" , "@MENU_SB_TOOLTIP_FILTER_FRIENDLY_FIRE_NO" ) ) ) );
 			}
 			onFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 1 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_browserFriendlyfire" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_FRIENDLY_FIRE_ALL" , ( select( dvarint( "ui_browserFriendlyfire" ) , "@MENU_SB_TOOLTIP_FILTER_FRIENDLY_FIRE_YES" , "@MENU_SB_TOOLTIP_FILTER_FRIENDLY_FIRE_NO" ) ) ) );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -575,7 +419,7 @@
 			textalign 6
 			textalignx -102.667
 			textscale 0.375
-			text "@MENU_FRIENDLY_FIRE2"
+			text "Friendly Fire"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 1 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 1 ) )
 			visible when ( 1 )
@@ -607,7 +451,7 @@
 			textalignx 107.667
 			textscale 0.375
 			dvar "ui_voiceType"
-			dvarFloatList { "@MENU_ALL" -1 "@MENU_NO_VOICE" 0 "@MENU_EVERYONE" 1 "@MENU_TEAM_CHAT" 2 }
+			dvarFloatList { "All" -1 "No Voice" 0 "Everyone" 1 "Team Chat" 2 }
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 1 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 2 ) )
 			visible when ( 1 )
@@ -615,39 +459,18 @@
 			action
 			{
 				play "mouse_click";
-				if ( localvarstring( "ui_tempMapFilterKey" ) != dvarstring( "ui_filterMapKey" ) )
-				{
-					setdvar "ui_filterMapKey" "localVarString" ( "ui_tempMapFilterKey" );
-					setdvar "ui_filterMapName" "localVarString" ( "ui_tempMapFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarstring( "ui_tempGameTypeFilterKey" ) != dvarstring( "ui_joinGameTypeKey" ) )
-				{
-					setdvar "ui_joinGameTypeKey" "localVarString" ( "ui_tempGameTypeFilterKey" );
-					setdvar "ui_joinGameTypeName" "localVarString" ( "ui_tempGameTypeFilterName" );
-					uiScript "RefreshFilter";
-				}
-				if ( localvarint( "ui_tempMaxPingName" ) != dvarstring( "ui_maxPingName" ) )
-				{
-					setdvar "ui_maxPingName" "localVarString" ( "ui_tempMaxPingName" );
-					uiScript "RefreshFilter";
-				}
-				setLocalVarBool "ui_showApply" ( 1 );
-				uiScript "RefreshFilter" ;;
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_voiceType" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_VOICE_NO_FILTER" , ( select( ( dvarint( "ui_voiceType" ) == 0 ) , "@MENU_SB_TOOLTIP_FILTER_VOICE_NO_VOICE" , ( select( ( dvarint( "ui_voiceType" ) == 1 ) , "@MENU_SB_TOOLTIP_FILTER_VOICE_CHAT_ALL" , "@MENU_SB_TOOLTIP_FILTER_VOICE_CHAT_TEAM" ) ) ) ) ) );
+				uiScript "RefreshFilter";
 			}
 			onFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 2 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
-				//setLocalVarString "ui_sb_toolTip" ( select( ( dvarint( "ui_voiceType" ) < 0 ) , "@MENU_SB_TOOLTIP_FILTER_VOICE_NO_FILTER" , ( select( ( dvarint( "ui_voiceType" ) == 0 ) , "@MENU_SB_TOOLTIP_FILTER_VOICE_NO_VOICE" , ( select( ( dvarint( "ui_voiceType" ) == 1 ) , "@MENU_SB_TOOLTIP_FILTER_VOICE_CHAT_ALL" , "@MENU_SB_TOOLTIP_FILTER_VOICE_CHAT_TEAM" ) ) ) ) ) );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -661,7 +484,7 @@
 			textalign 6
 			textalignx -102.667
 			textscale 0.375
-			text "@MENU_VOICE_CHAT_ENABLE"
+			text "Voice Chat"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 1 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 2 ) )
 			visible when ( 1 )
@@ -706,14 +529,12 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 3 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
-				setLocalVarString "ui_sb_toolTip" ( "@MENU_SB_TOOLTIP_FILTER_PING" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -727,7 +548,7 @@
 			textalign 6
 			textalignx -102.667
 			textscale 0.375
-			text "@MENU_MAX_PING"
+			text "Max Ping"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 1 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 3 ) )
 			visible when ( 1 )
@@ -772,14 +593,12 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 0 );
 				setLocalVarInt "uisb_filter_focused_col" ( 2 );
-				setLocalVarString "ui_sb_toolTip" ( "@MENU_SB_TOOLTIP_FILTER_MAP" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -793,7 +612,7 @@
 			textalign 6
 			textalignx -123.2
 			textscale 0.375
-			text "@MENU_MAP_PRE2"
+			text "Map"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 2 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 0 ) )
 			visible when ( 1 )
@@ -838,14 +657,12 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 1 );
 				setLocalVarInt "uisb_filter_focused_col" ( 2 );
-				setLocalVarString "ui_sb_toolTip" ( "@MENU_SB_TOOLTIP_FILTER_GAME_MODE" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 		itemDef
@@ -859,7 +676,7 @@
 			textalign 6
 			textalignx -123.2
 			textscale 0.375
-			text "@MENU_GAME_TYPE2"
+			text "Gametype"
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 2 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 1 ) )
 			visible when ( 1 )
@@ -906,12 +723,10 @@
 			}
 			onFocus
 			{
-				setLocalVarString "ui_sb_toolTip" ( "@MENU_SB_TOOLTIP_BTN_RESET_FILTER" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
-				setLocalVarString "ui_sb_toolTip" ( "" );
 			}
 		}
 	}
