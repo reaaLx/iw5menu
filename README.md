@@ -11,3 +11,7 @@
 
 ### ui_allowMoreOptions 1
 ![alt tag](https://i.imgur.com/q3DQFlq.jpg)
+
+### title and emblems
+![alt tag](https://i.imgur.com/sO6VTmz.jpg)
+![alt tag](https://i.imgur.com/9TnSfcP.jpg)
