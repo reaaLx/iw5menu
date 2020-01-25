@@ -13,10 +13,25 @@
 		blurWorld 7
 		onOpen
 		{
-			setdvar "ui_navbarBottom" 0;
+			setdvar "ui_sbHasServerSelected" 0;
+			setdvar "ui_sbEnableAddToFavorite" 0;
+			setLocalVarInt "ui_sbFilterPanel" ( 0 );
+			setLocalVarString "ui_sb_toolTip" ( "" );
+			setLocalVarString "ui_internetFilterDesc" ( "" );
+			setLocalVarInt "ui_mouseOverColumn" ( - 1 ) );
+			setLocalVarInt "ui_mouseOverRow" ( - 1 ) );
+			setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
+			setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+			setLocalVarString "ui_tempMapFilterKey" ( dvarstring( "ui_filterMapKey" ) ) );
+			setLocalVarString "ui_tempMapFilterName" ( dvarstring( "ui_filterMapName" ) ) );
+			setLocalVarString "ui_tempGameTypeFilterKey" ( dvarstring( "ui_joinGameTypeKey" ) ) );
+			setLocalVarString "ui_tempGameTypeFilterName" ( dvarstring( "ui_joinGameTypeName" ) ) );
+			setLocalVarString "ui_tempMaxPingName" ( dvarstring( "ui_maxPingName" ) ) );
+			//setLocalVarString "ui_internetFilterDesc" ( ( select( ( dvarint( "ui_netSource" ) == 1 ) , ( select( dvarbool( "ui_browserShowFull" ) , ( select( dvarbool( "ui_browserShowEmpty" ) , "" , "@MENU_SB_INTERNET_FILTER_EMPTY" ) ) , ( select( dvarbool( "ui_browserShowEmpty" ) , "@MENU_SB_INTERNET_FILTER_FULL" , "@MENU_SB_INTERNET_FILTER_FULL_AND_EMPTY" ) ) ) ) , "" ) ) );
 			uiScript "LoadArenas";
-			uiScript "UpdateFilter";
 			uiScript "RefreshServers";
+			uiScript "UpdateFilter";
+
 		}
 		onEsc
 		{

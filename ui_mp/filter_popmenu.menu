@@ -69,18 +69,37 @@
 			{
 				play "mouse_click";
 				setLocalVarBool "ui_showApply" ( 1 );
+				if ( dvarInt("ui_browserShowFull") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Hide full servers" );
+
+				}
+				else 
+				{
+					setLocalVarString "ui_hint_text" ( "Show full servers" );
+				}
 				uiScript "RefreshFilter";
 			}
 			onFocus
 			{
+				play "mouse_over";
 				setLocalVarInt "uisb_filter_focused_row" ( 0 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				play "mouse_over";
+				if ( dvarInt("ui_browserShowFull") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Hide full servers" );
+
+				}
+				else 
+				{
+					setLocalVarString "ui_hint_text" ( "Show full servers" );
+				}
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -133,17 +152,36 @@
 			{
 				play "mouse_click";
 				uiScript "RefreshFilter";
+				if ( dvarInt("ui_browserShowEmpty") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Hide empty servers" );
+
+				}
+				if ( dvarInt("ui_browserShowEmpty") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show empty servers" );
+				}
 			}
 			onFocus
 			{
+				play "mouse_over";
 				setLocalVarInt "uisb_filter_focused_row" ( 1 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				play "mouse_over";
+				if ( dvarInt("ui_browserShowEmpty") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Hide empty servers" );
+
+				}
+				if ( dvarInt("ui_browserShowEmpty") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show empty servers" );
+				}
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -189,7 +227,7 @@
 			textalignx 107.667
 			textscale 0.375
 			dvar "ui_browserHardcore"
-			dvarFloatList { "@MENU_ALL" -1 "@MENU_NO" 0 "@MENU_YES" 1 }
+			dvarFloatList { "@MENU_ALL" 0 "@MENU_NO" 1 "@MENU_YES" 2 }
 			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 0 ) + 4 )
 			exp rect y ( 4 + ( ( 20 + 4 ) * 2 ) )
 			visible when ( 1 )
@@ -198,18 +236,43 @@
 			{
 				play "mouse_click";
 				setLocalVarBool "ui_showApply" ( 1 );
-				uiScript "RefreshFilter" ;;
+				uiScript "RefreshFilter";
+				if ( dvarInt("ui_browserHardcore") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "No hardcore filter" );
+				}
+				if( dvarInt("ui_browserHardcore") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show hardcore disabled servers" );
+				}
+				if( dvarInt("ui_browserHardcore") == 2 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show hardcore enabled servers" );
+				}
 			}
 			onFocus
 			{
+				play "mouse_over";
 				setLocalVarInt "uisb_filter_focused_row" ( 2 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				play "mouse_over";
+				if ( dvarInt("ui_browserHardcore") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "No hardcore filter" );
+				}
+				if( dvarInt("ui_browserHardcore") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show hardcore disabled servers" );
+				}
+				if( dvarInt("ui_browserHardcore") == 2 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show hardcore enabled servers" );
+				}
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -224,8 +287,8 @@
 			textalignx -102.667
 			textscale 0.375
 			text "Hardcore"
-			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 0 ) + 4 )
-			exp rect y ( 4 + ( ( 20 + 4 ) * 2 ) )
+			exp rect x ( 4 )
+			exp rect y ( 52 )
 			visible when ( 1 )
 			disabled when ( 0 )
 		}
@@ -238,8 +301,8 @@
 			forecolor 1 1 1 1
 			background "menu_button_selection_bar"
 			textscale 0.55
-			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 0 ) + 4 )
-			exp rect y ( 4 + ( ( 20 + 4 ) * 3 ) )
+			exp rect x ( 4 )
+			exp rect y ( 76 )
 			visible when ( 1 && ( localvarint( "uisb_filter_focused_row" ) == 3 ) && ( localvarint( "uisb_filter_focused_col" ) == 0 ) )
 			disabled when ( 0 )
 		}
@@ -256,25 +319,50 @@
 			textscale 0.375
 			dvar "ui_browserShowPassword"
 			dvarFloatList { "@MENU_ALL" -1 "@MENU_NO" 0 "@MENU_YES" 1 }
-			exp rect x ( ( ( ( ( ( ( ( ( ( ( 6 + 22 ) + 249 ) + 90 ) + 48 ) + 151 ) + 24 ) + 40 - 6 ) - ( 2 * 4 ) ) / 3 ) * 0 ) + 4 )
-			exp rect y ( 4 + ( ( 20 + 4 ) * 3 ) )
+			exp rect x ( 4 )
+			exp rect y ( 76 )	
 			visible when ( 1 )
 			disabled when ( 0 )
 			action
 			{
 				play "mouse_click";
 				uiScript "RefreshFilter";
+				if ( dvarInt("ui_browserShowPassword") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "Show public and password protected servers" );
+				}
+				if( dvarInt("ui_browserShowPassword") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show public servers only" );
+				}
+				if( dvarInt("ui_browserShowPassword") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show password protected servers only" );
+				}
 			}
 			onFocus
 			{
+				play "mouse_over";
 				setLocalVarInt "uisb_filter_focused_row" ( 3 );
 				setLocalVarInt "uisb_filter_focused_col" ( 0 );
-				play "mouse_over";
+				if ( dvarInt("ui_browserShowPassword") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "Show public and password protected servers" );
+				}
+				if( dvarInt("ui_browserShowPassword") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show public servers only" );
+				}
+				if( dvarInt("ui_browserShowPassword") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show password protected servers only" );
+				}
 			}
 			leaveFocus
 			{
-				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
-				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarInt "uisb_filter_focused_row" ( -1 );
+				setLocalVarInt "uisb_filter_focused_col" ( -1 );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -335,12 +423,14 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 0 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
+				setLocalVarString "ui_hint_text" ( "Show killcam enabled servers" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -400,12 +490,14 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 1 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
+				setLocalVarString "ui_hint_text" ( "Show friendly fire enabled servers" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -465,12 +557,14 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 2 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
+				setLocalVarString "ui_hint_text" ( "Show voice enabled servers" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -529,12 +623,14 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 3 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
+				setLocalVarString "ui_hint_text" ( "Filter servers by max ping" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -593,12 +689,14 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 0 );
 				setLocalVarInt "uisb_filter_focused_col" ( 2 );
+				setLocalVarString "ui_hint_text" ( "Filter servers by map name" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -657,12 +755,14 @@
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( 1 );
 				setLocalVarInt "uisb_filter_focused_col" ( 2 );
+				setLocalVarString "ui_hint_text" ( "Filter servers by game mode" );
 				play "mouse_over";
 			}
 			leaveFocus
 			{
 				setLocalVarInt "uisb_filter_focused_row" ( - 1 ) );
 				setLocalVarInt "uisb_filter_focused_col" ( - 1 ) );
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 		itemDef
@@ -724,9 +824,11 @@
 			onFocus
 			{
 				play "mouse_over";
+				setLocalVarString "ui_hint_text" ( "Reset filter options" );
 			}
 			leaveFocus
 			{
+				setLocalVarString "ui_hint_text" ( "@NULL_EMPTY" );
 			}
 		}
 	}
