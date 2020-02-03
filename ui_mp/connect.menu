@@ -42,7 +42,7 @@
 		}
 		itemDef
 		{
-			rect 32 30 280 14 1 1
+			rect 32 29 280 14 1 1
 			decoration
 			visible 1
 			forecolor 1 1 1 1
@@ -54,7 +54,7 @@
 		}
 		itemDef
 		{
-			rect 32 56 280 10 1 1
+			rect 32 55 280 10 1 1
 			decoration
 			visible 1
 			forecolor 0.7843 0.7843 0.7843 1
@@ -73,7 +73,6 @@
 			textfont 3
 			textalign 6
 			textscale 0.375
-			textstyle 3
 			exp text ( connectioninfo( ) )
 		}
 		itemDef
@@ -85,7 +84,6 @@
 			textfont 3
 			textalign 4
 			textscale 0.375
-			textstyle 3
 			visible when ( connectioninfo( ) != "" && ( ( sin( milliseconds( ) * 0.005 ) + 1 ) * 0.5 <= 0.25 ) )
 			exp text ( "" )
 		}
@@ -98,7 +96,6 @@
 			textfont 3
 			textalign 4
 			textscale 0.375
-			textstyle 3
 			visible when ( connectioninfo( ) != "" && ( ( sin( milliseconds( ) * 0.005 ) + 1 ) * 0.5 > 0.25 && ( sin( milliseconds( ) * 0.005 ) + 1 ) * 0.5 <= 0.5 ) )
 			exp text ( "." )
 		}
@@ -111,7 +108,6 @@
 			textfont 3
 			textalign 4
 			textscale 0.375
-			textstyle 3
 			visible when ( connectioninfo( ) != "" && ( ( sin( milliseconds( ) * 0.005 ) + 1 ) * 0.5 > 0.5 && ( sin( milliseconds( ) * 0.005 ) + 1 ) * 0.5 <= 0.75 ) )
 			exp text ( ".." )
 		}
@@ -124,13 +120,12 @@
 			textfont 3
 			textalign 4
 			textscale 0.375
-			textstyle 3
 			visible when ( connectioninfo( ) != "" && ( ( sin( milliseconds( ) * 0.005 ) + 1 ) * 0.5 > 0.75 ) )
 			exp text ( "..." )
 		}
 		itemDef
 		{
-			rect 32 -71 661 7 1 3
+			rect 32 -71 504 7 1 3
 			decoration
 			visible 1
 			style 1
@@ -142,7 +137,7 @@
 		itemDef
 		{
 			name "loadbar"
-			rect 32 -71 661 7 1 3
+			rect 32 -71 504 7 1 3
 			decoration
 			visible 1
 			style 6
@@ -153,7 +148,7 @@
 		}
 		itemDef
 		{
-			rect 32 -64 661 2 1 3
+			rect 32 -64 504 2 1 3
 			decoration
 			autowrapped
 			visible 1
@@ -166,7 +161,7 @@
 		}
 		itemDef
 		{
-			rect 32 -91 410 2 1 3
+			rect 32 -92 410 2 1 3
 			decoration
 			visible 1
 			forecolor 1 1 1 1

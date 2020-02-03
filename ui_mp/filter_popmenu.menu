@@ -418,13 +418,37 @@
 				play "mouse_click";
 				setLocalVarBool "ui_showApply" ( 1 );
 				uiScript "RefreshFilter";
+				if ( dvarInt("ui_browserKillcam") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "No kill cam filter" );
+				}
+				if( dvarInt("ui_browserKillcam") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show kill cam disabled servers only" );
+				}
+				if( dvarInt("ui_browserKillcam") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show kill cam enabled servers only" );
+				}
 			}
 			onFocus
 			{
+				play "mouse_over";
 				setLocalVarInt "uisb_filter_focused_row" ( 0 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
-				setLocalVarString "ui_hint_text" ( "Show killcam enabled servers" );
-				play "mouse_over";
+				if ( dvarInt("ui_browserKillcam") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "No kill cam filter" );
+				}
+				if( dvarInt("ui_browserKillcam") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show kill cam disabled servers only" );
+				}
+				if( dvarInt("ui_browserKillcam") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show kill cam enabled servers only" );
+				}
+				
 			}
 			leaveFocus
 			{
@@ -484,14 +508,38 @@
 			action
 			{
 				play "mouse_click";
-				uiScript "RefreshFilter" ;;
+				if ( dvarInt("ui_browserFriendlyfire") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "No friendly fire filter" );
+				}
+				if( dvarInt("ui_browserFriendlyfire") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show friendly fire disabled servers only" );
+				}
+				if( dvarInt("ui_browserFriendlyfire") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show friendly fire enabled servers only" );
+				}
+				uiScript "RefreshFilter";
 			}
 			onFocus
 			{
+				play "mouse_over";
 				setLocalVarInt "uisb_filter_focused_row" ( 1 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
-				setLocalVarString "ui_hint_text" ( "Show friendly fire enabled servers" );
-				play "mouse_over";
+				if ( dvarInt("ui_browserFriendlyfire") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "No friendly fire filter" );
+				}
+				if( dvarInt("ui_browserFriendlyfire") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show friendly fire disabled servers only" );
+				}
+				if( dvarInt("ui_browserFriendlyfire") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show friendly fire enabled servers only" );
+				}
+				
 			}
 			leaveFocus
 			{
@@ -552,13 +600,45 @@
 			{
 				play "mouse_click";
 				uiScript "RefreshFilter";
+				if ( dvarInt("ui_voiceType") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "No server chat filter" );
+				}
+				if( dvarInt("ui_voiceType") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show 'No Chat servers only'" );
+				}
+				if( dvarInt("ui_voiceType") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show 'Open Chat' servers only" );
+				}
+				if( dvarInt("ui_voiceType") == 2 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show 'Team Chat' servers only" );
+				}
 			}
 			onFocus
 			{
+				play "mouse_over";
 				setLocalVarInt "uisb_filter_focused_row" ( 2 );
 				setLocalVarInt "uisb_filter_focused_col" ( 1 );
-				setLocalVarString "ui_hint_text" ( "Show voice enabled servers" );
-				play "mouse_over";
+				if ( dvarInt("ui_voiceType") == "-1" )
+				{
+					setLocalVarString "ui_hint_text" ( "No server chat filter" );
+				}
+				if( dvarInt("ui_voiceType") == 0 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show 'No Chat servers only'" );
+				}
+				if( dvarInt("ui_voiceType") == 1 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show 'Open Chat' servers only" );
+				}
+				if( dvarInt("ui_voiceType") == 2 )
+				{
+					setLocalVarString "ui_hint_text" ( "Show 'Team Chat' servers only" );
+				}
+			
 			}
 			leaveFocus
 			{

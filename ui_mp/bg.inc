@@ -66,10 +66,6 @@
 			forecolor 0.596078 0.654902 0.603922 0.75
 			background "gradient"
 			textscale 0.55
-			exp forecolor r ( 0.596078 )
-			exp forecolor g ( 0.654902 )
-			exp forecolor b ( 0.603922 )
-			visible when ( 1 )
 		}
 		itemDef
 		{
@@ -80,9 +76,6 @@
 			forecolor 1 1 1 0.75
 			background "gradient"
 			textscale 0.55
-			exp forecolor r ( 0.596078 )
-			exp forecolor g ( 0.654902 )
-			exp forecolor b ( 0.603922 )
 			visible when ( localvarbool( "ui_shelfEnabled" ) )
 		}
 		itemDef
