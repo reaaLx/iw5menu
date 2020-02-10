@@ -86,7 +86,7 @@
 		CHOICE_BUTTON( 3, "mute_player", "@MPUI_MUTE_PLAYERS", open "muteplayer"; close "self"; )
 		CHOICE_BUTTON_NOHI_VIS( 4, "end_game", "@MENU_END_GAME", open "popup_endgame", when ( ( dvarbool( "onlinegame" ) && !dvarbool( "xblive_privatematch" ) ) == 0 && ( dvarbool( "sv_running" ) ) ) )
 		CHOICE_BUTTON_NOHI_VIS( 4, "leave_game", "@MENU_LEAVE_GAME", ;, when ( ( dvarbool( "onlinegame" ) && !dvarbool( "xblive_privatematch" ) ) || !( dvarbool( "sv_running" ) ) ) )
-	}
+
 		itemDef
 		{
 			rect 0 0 0 20 3 3

@@ -40,7 +40,7 @@
 			background "white"
 			textscale 0.55
 		}
-		MENU_POPUP_FRAME( 45.5, 260, 40, "@MENU_ARE_YOU_SURE_QUIT" )
+		MENU_POPUP_FRAME( 45.5, 260, 40, "@MENU_NOTICE", "@MENU_ARE_YOU_SURE_QUIT" )
 
 		#undef CHOICE_Y_SPACING
 		#define CHOICE_Y_SPACING		24

@@ -1,4 +1,12 @@
-#define MENU_POPUP_FRAME( RECT_Y, RECT_W, RECT_H, POPUP_TEXT ) \
+#ifndef CHOICE_POPUP_TEXT_WIDTH
+#define CHOICE_POPUP_TEXT_WIDTH 244 //320
+#endif 
+
+//#ifndef CHOICE_POPUP_TEXT_RECT_X
+//#define CHOICE_POPUP_TEXT_RECT_X 8
+//#endif 
+
+#define MENU_POPUP_FRAME( RECT_Y, RECT_W, RECT_H, POPUP_TITLE, POPUP_DESC ) \
 		itemDef \
 		{ \
 			rect 0 24 ( ( RECT_W ) ) ( ( RECT_H + 70 ) ) 2 2  \
@@ -36,11 +44,11 @@
 			textfont 9 \
 			textalign 8 \
 			textscale 0.375 \
-			exp text ( "@MENU_NOTICE" ) \
+			exp text ( POPUP_TITLE ) \
 		} \
 		itemDef \
 		{ \
-			rect 8 24.667 244 20 2 2 \
+			rect 8 24.667 (CHOICE_POPUP_TEXT_WIDTH) 20 2 2 \
 			decoration \
 			autowrapped \
 			visible 1 \
@@ -49,7 +57,7 @@
 			textfont 3 \
 			textalign 4 \
 			textscale 0.375 \
-			exp text ( POPUP_TEXT ) \
+			exp text ( POPUP_DESC ) \
 		} \
 		itemDef \
 		{ \

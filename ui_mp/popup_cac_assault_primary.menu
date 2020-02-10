@@ -57,13 +57,11 @@
 			decoration
 			visible 1
 			style 3
-			forecolor 1 1 1 0.75
+			forecolor 0.596078 0.654902 0.603922 0.75
 			background "gradient"
 			textscale 0.55
 			exp rect x ( 457.5 )
-			exp forecolor r ( 0.596078 )
-			exp forecolor g ( 0.654902 )
-			exp forecolor b ( 0.603922 )
+			visible when ( menuisopen( "popup_cac_assault_primary") )
 		}
 		itemDef
 		{
@@ -71,13 +69,11 @@
 			decoration
 			visible 1
 			style 3
-			forecolor 1 1 1 0.75
+			forecolor 0.596078 0.654902 0.603922 0.75
 			background "gradient"
 			textscale 0.55
 			exp rect x ( 457.5 )
-			exp forecolor r ( 0.596078 )
-			exp forecolor g ( 0.654902 )
-			exp forecolor b ( 0.603922 )
+			visible when ( menuisopen( "popup_cac_assault_primary") )
 		}
 		itemDef
 		{
