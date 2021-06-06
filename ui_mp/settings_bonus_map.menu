@@ -313,11 +313,12 @@
 
 		CHOICE_SEPERATOR( 13 )
 
-		LOCAL_MAP_BUTTON( 13,  "button_13", "oilrig", 			"MPUI_OILRIG",			"MPUI_DESC_MAP_OILRIG",			"preview_oilrig" 			)
-		LOCAL_MAP_BUTTON( 14,  "button_14", "mp_rust_long",		"MPUI_RUST_LONG",		"MPUI_DESC_MAP_RUST_LONG",		"preview_mp_rust_long"		)
-		LOCAL_MAP_BUTTON( 15,  "button_15", "mp_shipment_long",	"MPUI_SHIPMENT_LONG",	"MPUI_DESC_MAP_SHIPMENT_LONG",	"preview_mp_shipment_long"	)
-		LOCAL_MAP_BUTTON( 16,  "button_16", "co_hunted",		"MPUI_CO_HUNTED",		"MPUI_DESC_MAP_CO_HUNTED",		"preview_co_hunted"			)
-		LOCAL_MAP_BUTTON( 17,  "button_17", "mp_cargoship",		"MPUI_CARGOSHIP",		"MPUI_DESC_MAP_CARGOSHIP",		"preview_mp_cargoship"		)
+		LOCAL_MAP_BUTTON( 13,  "button_13", "mp_shipment",      "MPUI_SHIPMENT",        "MPUI_DESC_MAP_SHIPMENT",       "preview_mp_shipment"       )
+		LOCAL_MAP_BUTTON( 14,  "button_14", "oilrig", 			"MPUI_OILRIG",			"MPUI_DESC_MAP_OILRIG",			"preview_oilrig" 			)
+		LOCAL_MAP_BUTTON( 15,  "button_15", "mp_rust_long",		"MPUI_RUST_LONG",		"MPUI_DESC_MAP_RUST_LONG",		"preview_mp_rust_long"		)
+		LOCAL_MAP_BUTTON( 16,  "button_16", "mp_shipment_long",	"MPUI_SHIPMENT_LONG",	"MPUI_DESC_MAP_SHIPMENT_LONG",	"preview_mp_shipment_long"	)
+		LOCAL_MAP_BUTTON( 17,  "button_17", "co_hunted",		"MPUI_CO_HUNTED",		"MPUI_DESC_MAP_CO_HUNTED",		"preview_co_hunted"			)
+		LOCAL_MAP_BUTTON( 18,  "button_18", "mp_cargoship",		"MPUI_CARGOSHIP",		"MPUI_DESC_MAP_CARGOSHIP",		"preview_mp_cargoship"		)
 
 	  	itemDef
 		{
